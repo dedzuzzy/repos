@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Global Visa Checker</title>
+    <style>
+        :root {
+            --primary: #4361ee;
+            --secondary: #3f37c9;
+            --accent: #4895ef;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --success: #40c979;
+            --warning: #f72585;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f7fa;
+            color: var(--dark);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 2rem;
+            padding: 1rem;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        .form-container {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            margin-bottom: 2rem;
+        }
+        
+        .form-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-item {
+            flex: 1;
+            min-width: 200px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--dark);
+        }
+        
+        select, button {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        select:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(72, 149, 239, 0.2);
+        }
+        
+        button {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        button:hover {
+            background-color: var(--secondary);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .results {
+            display: none;
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            margin-bottom: 2rem;
+        }
+        
+        .result-header {
+            text-align: center;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .visa-section {
+            margin-bottom: 2rem;
+        }
+        
+        .visa-title {
+            font-size: 1.3rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .visa-title i {
+            margin-right: 0.5rem;
+        }
+        
+        .visa-status {
+            padding: 1rem;
+            border-radius: 5px;
+            margin-bottom: 1rem;
+            font-weight: bold;
+        }
+        
+        .no-visa {
+            background-color: rgba(76, 201, 240, 0.2);
+            color: #0a9396;
+            font-size: 1.2rem;
+            text-align: center;
+            padding: 1.5rem;
+            border-left: 4px solid var(--success);
+        }
+        
+        .requires-visa {
+            background-color: rgba(247, 37, 133, 0.1);
+            color: #f72585;
+            border-left: 4px solid var(--warning);
+        }
+        
+        .requirements-list {
+            padding-left: 1.5rem;
+        }
+        
+        .requirements-list li {
+            margin-bottom: 0.5rem;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 1rem;
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 768px) {
+            .form-group {
+                flex-direction: column;
+            }
+            
+            .form-item {
+                width: 100%;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8938997351293204"
+     crossorigin="anonymous"></script>
+     
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Global Visa Checker</h1>
+            <p class="subtitle">Check visa requirements between countries</p>
+        </header>
+        
+        <div class="form-container">
+            <div class="form-group">
+                <div class="form-item">
+                    <label for="origin">Your Country of Origin</label>
+                    <select id="origin">
+                        <option value="">Select your country</option>
+                    </select>
+                </div>
+                <div class="form-item">
+                    <label for="destination">Destination Country</label>
+                    <select id="destination">
+                        <option value="">Select destination country</option>
+                    </select>
+                </div>
+            </div>
+            <button id="check-btn">Check Visa Requirements</button>
+        </div>
+        
+        <div class="results" id="results">
+            <div class="result-header">
+                <h2>Visa Requirements</h2>
+                <p id="route-text"></p>
+            </div>
+            
+            <div class="visa-section" id="tourist-section">
+                <h3 class="visa-title"><i class="fas fa-umbrella-beach"></i> Tourist Visa</h3>
+                <div class="visa-status" id="tourist-status"></div>
+                <div id="tourist-requirements"></div>
+            </div>
+            
+            <div class="visa-section" id="work-section">
+                <h3 class="visa-title"><i class="fas fa-briefcase"></i> Work Visa</h3>
+                <div class="visa-status" id="work-status"></div>
+                <div id="work-requirements"></div>
+            </div>
+            
+            <div class="visa-section" id="study-section">
+                <h3 class="visa-title"><i class="fas fa-graduation-cap"></i> Study Visa</h3>
+                <div class="visa-status" id="study-status"></div>
+                <div id="study-requirements"></div>
+            </div>
+        </div>
+        
+        <footer>
+            <p>© 2023 Global Visa Checker. This information is provided for general guidance only and may change without notice.</p>
+            <p> Email: LONXCOMPANY@AOL.COM </p>
+        </footer>
+    </div>
+
+    <script>
+        // List of 50 richest countries by GDP per capita (as of 2023)
+        const countries = [
+            {code: 'US', name: 'United States'},
+            {code: 'CN', name: 'China'},
+            {code: 'JP', name: 'Japan'},
+            {code: 'DE', name: 'Germany'},
+            {code: 'GB', name: 'United Kingdom'},
+            {code: 'FR', name: 'France'},
+            {code: 'IN', name: 'India'},
+            {code: 'IT', name: 'Italy'},
+            {code: 'BR', name: 'Brazil'},
+            {code: 'CA', name: 'Canada'},
+            {code: 'KR', name: 'South Korea'},
+            {code: 'RU', name: 'Russia'},
+            {code: 'AU', name: 'Australia'},
+            {code: 'ES', name: 'Spain'},
+            {code: 'MX', name: 'Mexico'},
+            {code: 'ID', name: 'Indonesia'},
+            {code: 'NL', name: 'Netherlands'},
+            {code: 'SA', name: 'Saudi Arabia'},
+            {code: 'TR', name: 'Turkey'},
+            {code: 'CH', name: 'Switzerland'},
+            {code: 'PL', name: 'Poland'},
+            {code: 'SE', name: 'Sweden'},
+            {code: 'BE', name: 'Belgium'},
+            {code: 'TH', name: 'Thailand'},
+            {code: 'IE', name: 'Ireland'},
+            {code: 'AR', name: 'Argentina'},
+            {code: 'NO', name: 'Norway'},
+            {code: 'IL', name: 'Israel'},
+            {code: 'AE', name: 'United Arab Emirates'},
+            {code: 'SG', name: 'Singapore'},
+            {code: 'MY', name: 'Malaysia'},
+            {code: 'DK', name: 'Denmark'},
+            {code: 'ZA', name: 'South Africa'},
+            {code: 'FI', name: 'Finland'},
+            {code: 'CL', name: 'Chile'},
+            {code: 'PH', name: 'Philippines'},
+            {code: 'EG', name: 'Egypt'},
+            {code: 'GR', name: 'Greece'},
+            {code: 'PK', name: 'Pakistan'},
+            {code: 'AT', name: 'Austria'},
+            {code: 'CO', name: 'Colombia'},
+            {code: 'CZ', name: 'Czech Republic'},
+            {code: 'PT', name: 'Portugal'},
+            {code: 'HU', name: 'Hungary'},
+            {code: 'NZ', name: 'New Zealand'},
+            {code: 'RO', name: 'Romania'},
+            {code: 'VN', name: 'Vietnam'},
+            {code: 'BD', name: 'Bangladesh'},
+            {code: 'QA', name: 'Qatar'},
+            {code: 'KW', name: 'Kuwait'},
+              {code: 'NG', name: 'Nigeria'},
+            {code: 'ET', name: 'Ethiopia'},
+            {code: 'CD', name: 'DR Congo'},
+            {code: 'TZ', name: 'Tanzania'},
+            {code: 'KE', name: 'Kenya'},
+            {code: 'UG', name: 'Uganda'},
+            {code: 'DZ', name: 'Algeria'},
+            {code: 'SD', name: 'Sudan'},
+            {code: 'MA', name: 'Morocco'},
+            {code: 'AO', name: 'Angola'},
+            {code: 'GH', name: 'Ghana'}
+        ];
+
+        // Visa requirements database (simplified for demonstration)
+        const visaRequirements = {
+            // US requirements
+            US: {
+                tourist: {
+                    visaFree: ['CA', 'GB', 'FR', 'DE', 'IT', 'JP', 'KR', 'AU', 'NZ', 'SG', 'CH', 'SE', 'NO', 'DK', 'FI', 'IE', 'AT', 'BE', 'NL', 'ES', 'PT'],
+                    requirements: ['Valid passport (6+ months)', 'Return ticket', 'Proof of sufficient funds', 'ESTA authorization for visa-free travelers']
+                },
+                work: {
+                    visaFree: [],
+                    requirements: ['Job offer from US employer', 'Approved petition (usually H-1B)', 'Labor certification', 'Form DS-160', 'Interview at US embassy']
+                },
+                study: {
+                    visaFree: [],
+                    requirements: ['Form I-20 from SEVP-approved school', 'SEVIS fee payment', 'Form DS-160', 'Proof of financial support', 'Interview at US embassy']
+                }
+            },
+
+            NG: {
+                tourist: {
+                    visaFree: ['GH', 'BJ', 'TG', 'SL', 'LR', 'ML', 'BF', 'NE', 'TD', 'CM', 'CF', 'GQ'],
+                    requirements: ['Valid passport (6+ months)', 'Return ticket', 'Proof of accommodation', 'Yellow fever certificate']
+                },
+                work: {
+                    visaFree: ['US', 'CA', 'AU', 'NZ', 'JP', 'KR', 'SG', 'MY', 'IL', 'AE', 'BR', 'AR', 'CL', 'UY'],
+                    requirements: ['Job offer from Nigerian company', 'Approval from Nigerian Immigration Service', 'Proof of qualifications', 'Medical certificate']
+                },
+                study: {
+                    visaFree: ['US', 'CA', 'AU', 'NZ', 'JP', 'KR', 'SG', 'MY', 'IL', 'AE', 'BR', 'AR', 'CL', 'UY'],
+                    requirements: ['Admission letter from Nigerian institution', 'Proof of financial support', 'Medical certificate', 'Police clearance']
+                }
+            },
+            // UK requirements
+            GB: {
+                tourist: {
+                    visaFree: ['US', 'CA', 'AU', 'NZ', 'JP', 'KR', 'SG', 'MY', 'IL', 'AE', 'BR', 'AR', 'CL', 'UY'],
+                    requirements: ['Valid passport', 'Proof of accommodation', 'Return ticket', 'Proof of sufficient funds']
+                },
+                work: {
+                    visaFree: [],
+                    requirements: ['Certificate of Sponsorship from licensed employer', 'Proof of English proficiency', 'Minimum salary threshold', 'Tuberculosis test if applicable']
+                },
+                study: {
+                    visaFree: [],
+                    requirements: ['Confirmation of Acceptance for Studies (CAS)', 'Proof of English proficiency', 'Proof of financial support', 'Tuberculosis test if applicable']
+                }
+            },
+            // EU countries (simplified common requirements)
+            FR: {
+                tourist: {
+                    visaFree: ['US', 'CA', 'AU', 'NZ', 'JP', 'KR', 'SG', 'MY', 'BR', 'AR', 'CL'],
+                    requirements: ['Valid passport (3+ months beyond stay)', 'Proof of accommodation', 'Return ticket', 'Medical insurance coverage €30,000+']
+                },
+                work: {
+                    visaFree: ['DE', 'IT', 'ES', 'PT', 'BE', 'NL', 'AT', 'SE', 'FI', 'DK', 'NO', 'CH'],
+                    requirements: ['Work contract', 'Proof of qualifications', 'Proof of accommodation', 'Medical insurance']
+                },
+                study: {
+                    visaFree: ['DE', 'IT', 'ES', 'PT', 'BE', 'NL', 'AT', 'SE', 'FI', 'DK', 'NO', 'CH'],
+                    requirements: ['Acceptance letter from French institution', 'Proof of financial means (€615/month)', 'Health insurance', 'Housing proof']
+                }
+            },
+            DE: {
+                tourist: {
+                    visaFree: ['US', 'CA', 'AU', 'NZ', 'JP', 'KR', 'SG', 'MY', 'BR', 'AR', 'CL'],
+                    requirements: ['Valid passport (3+ months beyond stay)', 'Proof of accommodation', 'Return ticket', 'Medical insurance coverage €30,000+']
+                },
+                work: {
+                    visaFree: ['FR', 'IT', 'ES', 'PT', 'BE', 'NL', 'AT', 'SE', 'FI', 'DK', 'NO', 'CH'],
+                    requirements: ['Work contract', 'Proof of qualifications', 'Proof of German language proficiency (if required)', 'Health insurance']
+                },
+                study: {
+                    visaFree: ['FR', 'IT', 'ES', 'PT', 'BE', 'NL', 'AT', 'SE', 'FI', 'DK', 'NO', 'CH'],
+                    requirements: ['University admission letter', 'Proof of financial means (€11,208/year)', 'Health insurance', 'Proof of German proficiency (if required)']
+                }
+            },
+            // Add more countries as needed...
+            // For demo purposes, we'll create a pattern for other countries
+            // In a real app, this would be comprehensive data
+            CA: {
+                tourist: {
+                    visaFree: ['US', 'GB', 'FR', 'DE', 'IT', 'JP', 'KR', 'AU', 'NZ', 'SG'],
+                    requirements: ['Valid passport', 'eTA required for visa-free travelers', 'Proof of funds (CAD$2,000+)', 'Return ticket']
+                },
+                work: {
+                    visaFree: [],
+                    requirements: ['LMIA (usually)', 'Job offer', 'Proof of qualifications', 'Medical exam']
+                },
+                study: {
+                    visaFree: [],
+                    requirements: ['Letter of acceptance from DLI', 'Proof of funds (CAD$10,000+)', 'No criminal record', 'Medical exam']
+                }
+            },
+            AU: {
+                tourist: {
+                    visaFree: ['US', 'GB', 'CA', 'NZ', 'SG', 'JP', 'KR', 'MY'],
+                    requirements: ['Valid passport', 'Electronic Travel Authority (ETA)', 'Proof of funds', 'Return ticket']
+                },
+                work: {
+                    visaFree: ['NZ'],
+                    requirements: ['Skills assessment', 'Points test (usually 65+)', 'English proficiency', 'Health insurance']
+                },
+                study: {
+                    visaFree: ['NZ'],
+                    requirements: ['Confirmation of Enrollment (CoE)', 'Proof of English proficiency', 'Overseas Student Health Cover', 'Genuine Temporary Entrant requirement']
+                }
+            },
+            JP: {
+                tourist: {
+                    visaFree: ['US', 'GB', 'CA', 'AU', 'NZ', 'SG', 'KR', 'MY', 'TH'],
+                    requirements: ['Valid passport', 'Return ticket', 'Proof of accommodation', 'Proof of funds']
+                },
+                work: {
+                    visaFree: [],
+                    requirements: ['Certificate of Eligibility', 'Job offer', 'Relevant qualifications', 'Company documents']
+                },
+                study: {
+                    visaFree: [],
+                    requirements: ['Certificate of Eligibility', 'Acceptance from Japanese institution', 'Proof of financial support (¥2,000,000+)', 'Japanese language proficiency (if required)']
+                }
+            },
+            // Default pattern for other countries
+            DEFAULT: {
+                tourist: {
+                    visaFree: ['US', 'GB', 'CA', 'AU', 'FR', 'DE', 'IT', 'ES', 'PT', 'NL', 'BE', 'CH', 'SE', 'NO', 'DK', 'FI'],
+                    requirements: ['Valid passport (6+ months)', 'Return ticket', 'Proof of accommodation', 'Proof of sufficient funds']
+                },
+                work: {
+                    visaFree: [],
+                    requirements: ['Work permit', 'Job offer', 'Proof of qualifications', 'Medical clearance']
+                },
+                study: {
+                    visaFree: [],
+                    requirements: ['Acceptance letter from recognized institution', 'Proof of financial support', 'Medical insurance', 'Language proficiency proof if required']
+                }
+            }
+        };
+
+        // Populate country dropdowns
+        document.addEventListener('DOMContentLoaded', function() {
+            const originSelect = document.getElementById('origin');
+            const destinationSelect = document.getElementById('destination');
+            
+            // Sort countries alphabetically
+            const sortedCountries = [...countries].sort((a, b) => a.name.localeCompare(b.name));
+            
+            sortedCountries.forEach(country => {
+                const option1 = document.createElement('option');
+                option1.value = country.code;
+                option1.textContent = country.name;
+                originSelect.appendChild(option1);
+                
+                const option2 = document.createElement('option');
+                option2.value = country.code;
+                option2.textContent = country.name;
+                destinationSelect.appendChild(option2);
+            });
+            
+            // Add event listener to check button
+            document.getElementById('check-btn').addEventListener('click', checkVisaRequirements);
+        });
+
+        function checkVisaRequirements() {
+            const origin = document.getElementById('origin').value;
+            const destination = document.getElementById('destination').value;
+            
+            if (!origin || !destination) {
+                alert('Please select both origin and destination countries');
+                return;
+            }
+            
+            if (origin === destination) {
+                alert('Origin and destination countries cannot be the same');
+                return;
+            }
+            
+            // Get country names for display
+            const originName = document.getElementById('origin').options[document.getElementById('origin').selectedIndex].text;
+            const destinationName = document.getElementById('destination').options[document.getElementById('destination').selectedIndex].text;
+            
+            document.getElementById('route-text').textContent = `${originName} → ${destinationName}`;
+            
+            // Get requirements for destination country (fall back to DEFAULT if not specified)
+            const requirements = visaRequirements[destination] || visaRequirements.DEFAULT;
+            
+            // Check tourist visa
+            checkVisaType('tourist', origin, requirements.tourist);
+            
+            // Check work visa
+            checkVisaType('work', origin, requirements.work);
+            
+            // Check study visa
+            checkVisaType('study', origin, requirements.study);
+            
+            // Show results
+            document.getElementById('results').style.display = 'block';
+            
+            // Scroll to results
+            document.getElementById('results').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function checkVisaType(type, origin, requirements) {
+            const statusElement = document.getElementById(`${type}-status`);
+            const requirementsElement = document.getElementById(`${type}-requirements`);
+            
+            if (requirements.visaFree.includes(origin)) {
+                statusElement.className = 'visa-status no-visa';
+                statusElement.innerHTML = `<i class="fas fa-check-circle"></i> <strong>NO VISA REQUIRED</strong> for ${type} purposes`;
+                requirementsElement.innerHTML = '<p>You can enter visa-free for stays up to 90 days (typically). Always check current regulations before travel.</p>';
+            } else {
+                statusElement.className = 'visa-status requires-visa';
+                statusElement.innerHTML = `<i class="fas fa-exclamation-circle"></i> <strong>VISA REQUIRED</strong> for ${type} purposes`;
+                
+                let requirementsHTML = '<p>Typical requirements include:</p><ul class="requirements-list">';
+                requirements.requirements.forEach(req => {
+                    requirementsHTML += `<li>${req}</li>`;
+                });
+                requirementsHTML += '</ul><p>Processing times vary. Apply well in advance of your planned travel.</p>';
+                
+                requirementsElement.innerHTML = requirementsHTML;
+            }
+        }
+    </script>
+   <script async="async" data-cfasync="false" src="//pl27142399.profitableratecpm.com/0a7831801c6410857c7216446fb4006c/invoke.js"></script>
+<div id="container-0a7831801c6410857c7216446fb4006c"></div>
+</body>
+</html>

@@ -2,546 +2,584 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Global Visa Checker</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5, user-scalable=yes">
+    <title>MEGA VIDEO DOWNLOADER · TikTok, YouTube, FB, IG</title>
+    <!-- Font Awesome 6 (free) for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Google Fonts: Inter modern sans -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
     <style>
-        :root {
-            --primary: #4361ee;
-            --secondary: #3f37c9;
-            --accent: #4895ef;
-            --light: #f8f9fa;
-            --dark: #212529;
-            --success: #40c979;
-            --warning: #9c687f;
-        }
-        
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
         }
-        
+
         body {
-            background-color: #f5f7fa;
-            color: var(--dark);
-            line-height: 1.6;
-        }
-        
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 2rem;
-        }
-        
-        header {
-            text-align: center;
-            margin-bottom: 2rem;
-            padding: 1rem;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            color: white;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-        
-        h1 {
-            font-size: 2.5rem;
-            margin-bottom: 0.5rem;
-        }
-        
-        .subtitle {
-            font-size: 1.2rem;
-            opacity: 0.9;
-        }
-        
-        .form-container {
-            background: white;
-            padding: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-            margin-bottom: 2rem;
-        }
-        
-        .form-group {
+            background: linear-gradient(145deg, #0b0f18 0%, #131a28 100%);
+            min-height: 100vh;
+            padding: 2rem 1.5rem;
             display: flex;
-            flex-wrap: wrap;
-            gap: 1rem;
-            margin-bottom: 1.5rem;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #ffffff;
         }
-        
-        .form-item {
-            flex: 1;
-            min-width: 200px;
-        }
-        
-        label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: 600;
-            color: var(--dark);
-        }
-        
-        select, button {
+
+        .mega-container {
+            max-width: 1300px;
             width: 100%;
-            padding: 0.8rem;
-            border: 1px solid #8f4545;
-            border-radius: 5px;
-            font-size: 1rem;
-            transition: all 0.3s ease;
+            margin: 0 auto;
         }
-        
-        select:focus {
-            outline: none;
-            border-color: var(--accent);
-            box-shadow: 0 0 0 3px rgba(72, 149, 239, 0.2);
-        }
-        
-        button {
-            background-color: var(--primary);
-            color: white;
-            border: none;
-            cursor: pointer;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        
-        button:hover {
-            background-color: var(--secondary);
-            transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-        
-        .results {
-            display: none;
-            background: white;
-            padding: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-            margin-bottom: 2rem;
-        }
-        
-        .result-header {
+
+        /* header */
+        .app-header {
             text-align: center;
-            margin-bottom: 1.5rem;
-            padding-bottom: 1rem;
-            border-bottom: 1px solid #eee;
+            margin-bottom: 3rem;
         }
-        
-        .visa-section {
-            margin-bottom: 2rem;
-        }
-        
-        .visa-title {
-            font-size: 1.3rem;
-            color: var(--primary);
-            margin-bottom: 1rem;
+
+        .app-header h1 {
+            font-size: 2.8rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            background: linear-gradient(to right, #f1f9ff, #c0e0ff, #a3d0ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
             display: flex;
             align-items: center;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
         }
-        
-        .visa-title i {
-            margin-right: 0.5rem;
+
+        .app-header h1 i {
+            background: rgba(255,255,255,0.08);
+            padding: 10px;
+            border-radius: 24px;
+            -webkit-text-fill-color: white;
+            color: white;
+            font-size: 2.2rem;
         }
-        
-        .visa-status {
-            padding: 1rem;
-            border-radius: 5px;
-            margin-bottom: 1rem;
-            font-weight: bold;
-        }
-        
-        .no-visa {
-            background-color: rgba(76, 201, 240, 0.2);
-            color: #0a9396;
+
+        .subhead {
+            color: #a0b8d4;
             font-size: 1.2rem;
+            font-weight: 400;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            padding-bottom: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* platform cards */
+        .platform-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 22px;
+            margin-bottom: 40px;
+        }
+
+        .platform-card {
+            background: rgba(18, 26, 36, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 32px;
+            padding: 1.8rem 1rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
             text-align: center;
-            padding: 1.5rem;
-            border-left: 4px solid var(--success);
+            transition: all 0.25s ease;
+            cursor: pointer;
+            box-shadow: 0 10px 25px -10px rgba(0,0,0,0.5);
         }
-        
-        .requires-visa {
-            background-color: rgba(247, 37, 133, 0.1);
-            color: #f72585;
-            border-left: 4px solid var(--warning);
+
+        .platform-card:hover {
+            border-color: rgba(255, 255, 255, 0.25);
+            background: rgba(28, 40, 55, 0.8);
+            transform: translateY(-6px);
+            box-shadow: 0 20px 30px -10px #00000055;
         }
-        
-        .requirements-list {
-            padding-left: 1.5rem;
+
+        .platform-card.active {
+            border: 2px solid #ffffff;
+            background: radial-gradient(circle at top, #1e2b3c, #121c28);
+            box-shadow: 0 0 30px rgba(255,255,255,0.15);
         }
-        
-        .requirements-list li {
-            margin-bottom: 0.5rem;
+
+        .platform-icon {
+            font-size: 2.8rem;
+            margin-bottom: 0.9rem;
+            background: rgba(255,255,255,0.05);
+            padding: 16px;
+            border-radius: 60px;
+            width: 80px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
-        
-        footer {
+
+        .platform-card h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        .platform-card p {
+            color: #aac1de;
+            font-size: 0.85rem;
+            font-weight: 400;
+        }
+
+        .tiktok { color: #ff0050; }
+        .youtube { color: #ff0000; }
+        .facebook { color: #1877f2; }
+        .instagram { color: #e1306c; }
+
+        /* download panel */
+        .download-panel {
+            background: rgba(13, 19, 27, 0.7);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 48px;
+            padding: 2.5rem 2.2rem;
+            margin-top: 1rem;
+            box-shadow: 0 25px 40px -15px black;
+        }
+
+        .active-label {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1.8rem;
+            color: #d3e6ff;
+            border-bottom: 1px dashed #3e566b;
+            padding-bottom: 0.9rem;
+        }
+
+        .active-label i {
+            font-size: 2rem;
+        }
+
+        .input-group {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 28px;
+        }
+
+        .url-input {
+            flex: 1 1 300px;
+            background: #0e151f;
+            border: 1.5px solid #2a3748;
+            border-radius: 60px;
+            padding: 1rem 1.8rem;
+            font-size: 1.1rem;
+            color: white;
+            outline: none;
+            transition: 0.2s;
+            font-weight: 400;
+            letter-spacing: 0.3px;
+        }
+
+        .url-input:focus {
+            border-color: #6c9bd2;
+            background: #0b111a;
+            box-shadow: 0 0 0 3px rgba(98, 159, 255, 0.2);
+        }
+
+        .url-input::placeholder {
+            color: #7c8fa3;
+            font-weight: 300;
+            opacity: 0.8;
+        }
+
+        .download-btn {
+            background: linear-gradient(100deg, #2277e0, #1c5bbf);
+            border: none;
+            border-radius: 60px;
+            padding: 1rem 2.2rem;
+            color: white;
+            font-size: 1.2rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            cursor: pointer;
+            transition: 0.18s;
+            border: 1px solid rgba(255,255,255,0.25);
+            box-shadow: 0 8px 18px #00000055;
+            letter-spacing: 0.5px;
+        }
+
+        .download-btn i {
+            font-size: 1.3rem;
+        }
+
+        .download-btn:hover {
+            background: linear-gradient(100deg, #2e8aff, #1f6ad0);
+            transform: scale(1.02);
+            border-color: rgba(255,255,255,0.5);
+        }
+
+        .download-btn:active {
+            transform: scale(0.98);
+        }
+
+        .info-area {
+            background: rgba(0,0,0,0.35);
+            border-radius: 28px;
+            padding: 1.5rem 2rem;
+            margin-top: 28px;
+            border-left: 6px solid #3f7ec6;
+            color: #c9def0;
+            font-size: 1rem;
+            line-height: 1.5;
+            word-break: break-word;
+        }
+
+        .demo-note {
+            background: rgba(255,220,100,0.08);
+            border-radius: 40px;
+            padding: 1.2rem 1.8rem;
+            margin-top: 25px;
+            color: #ffd966;
+            border: 1px solid #ffb34740;
+            display: flex;
+            gap: 12px;
+            align-items: flex-start;
+            font-weight: 400;
+        }
+
+        .demo-note i {
+            font-size: 1.5rem;
+            color: #ffb347;
+        }
+
+        .footer-note {
+            margin-top: 45px;
+            color: #7e99b0;
             text-align: center;
-            padding: 1rem;
-            color: #666;
             font-size: 0.9rem;
+            border-top: 1px solid #25303e;
+            padding-top: 25px;
         }
-        
-        @media (max-width: 768px) {
-            .form-group {
-                flex-direction: column;
-            }
-            
-            .form-item {
-                width: 100%;
-            }
+
+        /* examples + tags */
+        .example-tag {
+            display: inline-block;
+            background: #1f3246;
+            border-radius: 30px;
+            padding: 5px 15px;
+            margin: 8px 8px 0 0;
+            font-size: 0.8rem;
+            color: #b3d6ff;
+            cursor: pointer;
+            border: 1px solid #3d566b;
+            transition: 0.1s;
+        }
+
+        .example-tag:hover {
+            background: #2c445e;
+            color: white;
+        }
+
+        @media (max-width: 1000px) {
+            .platform-grid { grid-template-columns: repeat(2, 1fr); }
+            .app-header h1 { font-size: 2.2rem; }
+        }
+        @media (max-width: 600px) {
+            .platform-grid { grid-template-columns: 1fr; }
+            .download-panel { padding: 1.8rem; }
+            .download-btn { width: 100%; justify-content: center; }
         }
     </style>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8938997351293204"
-     crossorigin="anonymous"></script>
-     
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>Global Visa Checker</h1>
-            <p class="subtitle">Check visa requirements between countries</p>
-        </header>
-        
-        <div class="form-container">
-            <div class="form-group">
-                <div class="form-item">
-                    <label for="origin">Your Country of Origin</label>
-                    <select id="origin">
-                        <option value="">Select your country</option>
-                    </select>
-                </div>
-                <div class="form-item">
-                    <label for="destination">Destination Country</label>
-                    <select id="destination">
-                        <option value="">Select destination country</option>
-                    </select>
-                </div>
-            </div>
-            <button id="check-btn">Check Visa Requirements</button>
-        </div>
-        
-        <div class="results" id="results">
-            <div class="result-header">
-                <h2>Visa Requirements</h2>
-                <p id="route-text"></p>
-            </div>
-            
-            <div class="visa-section" id="tourist-section">
-                <h3 class="visa-title"><i class="fas fa-umbrella-beach"></i> Tourist Visa</h3>
-                <div class="visa-status" id="tourist-status"></div>
-                <div id="tourist-requirements"></div>
-            </div>
-            
-            <div class="visa-section" id="work-section">
-                <h3 class="visa-title"><i class="fas fa-briefcase"></i> Work Visa</h3>
-                <div class="visa-status" id="work-status"></div>
-                <div id="work-requirements"></div>
-            </div>
-            
-            <div class="visa-section" id="study-section">
-                <h3 class="visa-title"><i class="fas fa-graduation-cap"></i> Study Visa</h3>
-                <div class="visa-status" id="study-status"></div>
-                <div id="study-requirements"></div>
+    <div class="mega-container">
+        <!-- Header -->
+        <div class="app-header">
+            <h1>
+                <i class="fas fa-download"></i> 
+                MEGA VIDEO DOWNLOADER
+                <i class="fas fa-video"></i>
+            </h1>
+            <div class="subhead">
+                <i class="fas fa-globe" style="margin-right: 8px;"></i> 
+                TikTok · YouTube · Facebook · Instagram — one click away
             </div>
         </div>
-        
-        <footer>
-            <p>© 2023 Global Visa Checker. This information is provided for general guidance only and may change without notice.</p>
-            <p> Email: LONXCOMPANY@AOL.COM </p>
-        </footer>
+
+        <!-- ============ PLATFORM SELECTOR (4 CARDS) ============= -->
+        <div class="platform-grid" id="platformGrid">
+            <!-- TikTok card -->
+            <div class="platform-card active" data-platform="tiktok" id="cardTiktok">
+                <div class="platform-icon tiktok"><i class="fab fa-tiktok fa-3x"></i></div>
+                <h3>TikTok</h3>
+                <p>No watermark, HD</p>
+            </div>
+            <!-- YouTube card -->
+            <div class="platform-card" data-platform="youtube" id="cardYoutube">
+                <div class="platform-icon youtube"><i class="fab fa-youtube fa-3x"></i></div>
+                <h3>YouTube</h3>
+                <p>MP4, up to 4K</p>
+            </div>
+            <!-- Facebook card -->
+            <div class="platform-card" data-platform="facebook" id="cardFacebook">
+                <div class="platform-icon facebook"><i class="fab fa-facebook fa-3x"></i></div>
+                <h3>Facebook</h3>
+                <p>Public videos, stories</p>
+            </div>
+            <!-- Instagram card -->
+            <div class="platform-card" data-platform="instagram" id="cardInstagram">
+                <div class="platform-icon instagram"><i class="fab fa-instagram fa-3x"></i></div>
+                <h3>Instagram</h3>
+                <p>Posts, reels, stories</p>
+            </div>
+        </div>
+
+        <!-- ============ DOWNLOAD ACTION PANEL ============= -->
+        <div class="download-panel" id="downloadPanel">
+            <!-- Active platform label dynamically updated -->
+            <div class="active-label" id="activeLabel">
+                <i class="fab fa-tiktok" id="labelIcon" style="color: #ff0050;"></i>
+                <span id="labelText">TikTok Video Downloader</span>
+            </div>
+
+            <!-- INPUT & DOWNLOAD BUTTON -->
+            <div class="input-group">
+                <input type="url" id="videoUrl" class="url-input" placeholder="Paste video link here ..." autocomplete="off" value="">
+                <button class="download-btn" id="downloadBtn">
+                    <i class="fas fa-cloud-download-alt"></i> 
+                    <span id="btnPlatformName">Download TikTok</span>
+                </button>
+            </div>
+
+            <!-- INFO / INSTRUCTION AREA (DYNAMIC) -->
+            <div class="info-area" id="infoArea">
+                <i class="fas fa-info-circle" style="margin-right: 8px;"></i> 
+                <span id="infoText">Paste any TikTok video URL and click Download. (Demo simulation)</span>
+            </div>
+
+            <!-- EXAMPLE LINKS (quick fill) -->
+            <div style="display: flex; flex-wrap: wrap; align-items: baseline; gap: 10px; margin-top: 5px;">
+                <span style="color:#a3c1e0; font-size:0.9rem;"><i class="fas fa-lightbulb"></i> Try an example:</span>
+                <span class="example-tag" id="exampleTiktok">tiktok.com/@example/video/12345</span>
+                <span class="example-tag" id="exampleYoutube">youtube.com/watch?v=abc123</span>
+                <span class="example-tag" id="exampleFacebook">fb.watch/xyz123/</span>
+                <span class="example-tag" id="exampleInstagram">instagram.com/p/CxYzABC/</span>
+            </div>
+
+            <!-- DEMO NOTE (important: it's a frontend demo) -->
+            <div class="demo-note">
+                <i class="fas fa-flask"></i>
+                <span><strong>Functional demo simulation:</strong> This app generates a dummy download link for educational purposes. In a production environment, you would integrate with a proper API or backend service to fetch real video files. No actual videos are downloaded — but the interface fully works.</span>
+            </div>
+        </div>
+
+        <!-- footer -->
+        <div class="footer-note">
+            <i class="fas fa-shield-alt"></i> Mega Downloader • All platforms in one place • 2025
+        </div>
     </div>
 
     <script>
-        // List of 50 richest countries by GDP per capita (as of 2023)
-        const countries = [
-            {code: 'US', name: 'United States'},
-            {code: 'CN', name: 'China'},
-            {code: 'JP', name: 'Japan'},
-            {code: 'DE', name: 'Germany'},
-            {code: 'GB', name: 'United Kingdom'},
-            {code: 'FR', name: 'France'},
-            {code: 'IN', name: 'India'},
-            {code: 'IT', name: 'Italy'},
-            {code: 'BR', name: 'Brazil'},
-            {code: 'CA', name: 'Canada'},
-            {code: 'KR', name: 'South Korea'},
-            {code: 'RU', name: 'Russia'},
-            {code: 'AU', name: 'Australia'},
-            {code: 'ES', name: 'Spain'},
-            {code: 'MX', name: 'Mexico'},
-            {code: 'ID', name: 'Indonesia'},
-            {code: 'NL', name: 'Netherlands'},
-            {code: 'SA', name: 'Saudi Arabia'},
-            {code: 'TR', name: 'Turkey'},
-            {code: 'CH', name: 'Switzerland'},
-            {code: 'PL', name: 'Poland'},
-            {code: 'SE', name: 'Sweden'},
-            {code: 'BE', name: 'Belgium'},
-            {code: 'TH', name: 'Thailand'},
-            {code: 'IE', name: 'Ireland'},
-            {code: 'AR', name: 'Argentina'},
-            {code: 'NO', name: 'Norway'},
-            {code: 'IL', name: 'Israel'},
-            {code: 'AE', name: 'United Arab Emirates'},
-            {code: 'SG', name: 'Singapore'},
-            {code: 'MY', name: 'Malaysia'},
-            {code: 'DK', name: 'Denmark'},
-            {code: 'ZA', name: 'South Africa'},
-            {code: 'FI', name: 'Finland'},
-            {code: 'CL', name: 'Chile'},
-            {code: 'PH', name: 'Philippines'},
-            {code: 'EG', name: 'Egypt'},
-            {code: 'GR', name: 'Greece'},
-            {code: 'PK', name: 'Pakistan'},
-            {code: 'AT', name: 'Austria'},
-            {code: 'CO', name: 'Colombia'},
-            {code: 'CZ', name: 'Czech Republic'},
-            {code: 'PT', name: 'Portugal'},
-            {code: 'HU', name: 'Hungary'},
-            {code: 'NZ', name: 'New Zealand'},
-            {code: 'RO', name: 'Romania'},
-            {code: 'VN', name: 'Vietnam'},
-            {code: 'BD', name: 'Bangladesh'},
-            {code: 'QA', name: 'Qatar'},
-            {code: 'KW', name: 'Kuwait'},
-              {code: 'NG', name: 'Nigeria'},
-            {code: 'ET', name: 'Ethiopia'},
-            {code: 'CD', name: 'DR Congo'},
-            {code: 'TZ', name: 'Tanzania'},
-            {code: 'KE', name: 'Kenya'},
-            {code: 'UG', name: 'Uganda'},
-            {code: 'DZ', name: 'Algeria'},
-            {code: 'SD', name: 'Sudan'},
-            {code: 'MA', name: 'Morocco'},
-            {code: 'AO', name: 'Angola'},
-            {code: 'GH', name: 'Ghana'}
-        ];
+        (function() {
+            "use strict";
 
-        // Visa requirements database (simplified for demonstration)
-        const visaRequirements = {
-            // US requirements
-            US: {
-                tourist: {
-                    visaFree: ['CA', 'GB', 'FR', 'DE', 'IT', 'JP', 'KR', 'AU', 'NZ', 'SG', 'CH', 'SE', 'NO', 'DK', 'FI', 'IE', 'AT', 'BE', 'NL', 'ES', 'PT'],
-                    requirements: ['Valid passport (6+ months)', 'Return ticket', 'Proof of sufficient funds', 'ESTA authorization for visa-free travelers']
-                },
-                work: {
-                    visaFree: [],
-                    requirements: ['Job offer from US employer', 'Approved petition (usually H-1B)', 'Labor certification', 'Form DS-160', 'Interview at US embassy']
-                },
-                study: {
-                    visaFree: [],
-                    requirements: ['Form I-20 from SEVP-approved school', 'SEVIS fee payment', 'Form DS-160', 'Proof of financial support', 'Interview at US embassy']
-                }
-            },
+            // ---------- STATE: current selected platform ----------
+            let currentPlatform = 'tiktok';   // default
 
-            NG: {
-                tourist: {
-                    visaFree: ['GH', 'BJ', 'TG', 'SL', 'LR', 'ML', 'BF', 'NE', 'TD', 'CM', 'CF', 'GQ'],
-                    requirements: ['Valid passport (6+ months)', 'Return ticket', 'Proof of accommodation', 'Yellow fever certificate']
-                },
-                work: {
-                    visaFree: ['US', 'CA', 'AU', 'NZ', 'JP', 'KR', 'SG', 'MY', 'IL', 'AE', 'BR', 'AR', 'CL', 'UY'],
-                    requirements: ['Job offer from Nigerian company', 'Approval from Nigerian Immigration Service', 'Proof of qualifications', 'Medical certificate']
-                },
-                study: {
-                    visaFree: ['US', 'CA', 'AU', 'NZ', 'JP', 'KR', 'SG', 'MY', 'IL', 'AE', 'BR', 'AR', 'CL', 'UY'],
-                    requirements: ['Admission letter from Nigerian institution', 'Proof of financial support', 'Medical certificate', 'Police clearance']
-                }
-            },
-            // UK requirements
-            GB: {
-                tourist: {
-                    visaFree: ['US', 'CA', 'AU', 'NZ', 'JP', 'KR', 'SG', 'MY', 'IL', 'AE', 'BR', 'AR', 'CL', 'UY'],
-                    requirements: ['Valid passport', 'Proof of accommodation', 'Return ticket', 'Proof of sufficient funds']
-                },
-                work: {
-                    visaFree: [],
-                    requirements: ['Certificate of Sponsorship from licensed employer', 'Proof of English proficiency', 'Minimum salary threshold', 'Tuberculosis test if applicable']
-                },
-                study: {
-                    visaFree: [],
-                    requirements: ['Confirmation of Acceptance for Studies (CAS)', 'Proof of English proficiency', 'Proof of financial support', 'Tuberculosis test if applicable']
-                }
-            },
-            // EU countries (simplified common requirements)
-            FR: {
-                tourist: {
-                    visaFree: ['US', 'CA', 'AU', 'NZ', 'JP', 'KR', 'SG', 'MY', 'BR', 'AR', 'CL'],
-                    requirements: ['Valid passport (3+ months beyond stay)', 'Proof of accommodation', 'Return ticket', 'Medical insurance coverage €30,000+']
-                },
-                work: {
-                    visaFree: ['DE', 'IT', 'ES', 'PT', 'BE', 'NL', 'AT', 'SE', 'FI', 'DK', 'NO', 'CH'],
-                    requirements: ['Work contract', 'Proof of qualifications', 'Proof of accommodation', 'Medical insurance']
-                },
-                study: {
-                    visaFree: ['DE', 'IT', 'ES', 'PT', 'BE', 'NL', 'AT', 'SE', 'FI', 'DK', 'NO', 'CH'],
-                    requirements: ['Acceptance letter from French institution', 'Proof of financial means (€615/month)', 'Health insurance', 'Housing proof']
-                }
-            },
-            DE: {
-                tourist: {
-                    visaFree: ['US', 'CA', 'AU', 'NZ', 'JP', 'KR', 'SG', 'MY', 'BR', 'AR', 'CL'],
-                    requirements: ['Valid passport (3+ months beyond stay)', 'Proof of accommodation', 'Return ticket', 'Medical insurance coverage €30,000+']
-                },
-                work: {
-                    visaFree: ['FR', 'IT', 'ES', 'PT', 'BE', 'NL', 'AT', 'SE', 'FI', 'DK', 'NO', 'CH'],
-                    requirements: ['Work contract', 'Proof of qualifications', 'Proof of German language proficiency (if required)', 'Health insurance']
-                },
-                study: {
-                    visaFree: ['FR', 'IT', 'ES', 'PT', 'BE', 'NL', 'AT', 'SE', 'FI', 'DK', 'NO', 'CH'],
-                    requirements: ['University admission letter', 'Proof of financial means (€11,208/year)', 'Health insurance', 'Proof of German proficiency (if required)']
-                }
-            },
-            // Add more countries as needed...
-            // For demo purposes, we'll create a pattern for other countries
-            // In a real app, this would be comprehensive data
-            CA: {
-                tourist: {
-                    visaFree: ['US', 'GB', 'FR', 'DE', 'IT', 'JP', 'KR', 'AU', 'NZ', 'SG'],
-                    requirements: ['Valid passport', 'eTA required for visa-free travelers', 'Proof of funds (CAD$2,000+)', 'Return ticket']
-                },
-                work: {
-                    visaFree: [],
-                    requirements: ['LMIA (usually)', 'Job offer', 'Proof of qualifications', 'Medical exam']
-                },
-                study: {
-                    visaFree: [],
-                    requirements: ['Letter of acceptance from DLI', 'Proof of funds (CAD$10,000+)', 'No criminal record', 'Medical exam']
-                }
-            },
-            AU: {
-                tourist: {
-                    visaFree: ['US', 'GB', 'CA', 'NZ', 'SG', 'JP', 'KR', 'MY'],
-                    requirements: ['Valid passport', 'Electronic Travel Authority (ETA)', 'Proof of funds', 'Return ticket']
-                },
-                work: {
-                    visaFree: ['NZ'],
-                    requirements: ['Skills assessment', 'Points test (usually 65+)', 'English proficiency', 'Health insurance']
-                },
-                study: {
-                    visaFree: ['NZ'],
-                    requirements: ['Confirmation of Enrollment (CoE)', 'Proof of English proficiency', 'Overseas Student Health Cover', 'Genuine Temporary Entrant requirement']
-                }
-            },
-            JP: {
-                tourist: {
-                    visaFree: ['US', 'GB', 'CA', 'AU', 'NZ', 'SG', 'KR', 'MY', 'TH'],
-                    requirements: ['Valid passport', 'Return ticket', 'Proof of accommodation', 'Proof of funds']
-                },
-                work: {
-                    visaFree: [],
-                    requirements: ['Certificate of Eligibility', 'Job offer', 'Relevant qualifications', 'Company documents']
-                },
-                study: {
-                    visaFree: [],
-                    requirements: ['Certificate of Eligibility', 'Acceptance from Japanese institution', 'Proof of financial support (¥2,000,000+)', 'Japanese language proficiency (if required)']
-                }
-            },
-            // Default pattern for other countries
-            DEFAULT: {
-                tourist: {
-                    visaFree: ['US', 'GB', 'CA', 'AU', 'FR', 'DE', 'IT', 'ES', 'PT', 'NL', 'BE', 'CH', 'SE', 'NO', 'DK', 'FI'],
-                    requirements: ['Valid passport (6+ months)', 'Return ticket', 'Proof of accommodation', 'Proof of sufficient funds']
-                },
-                work: {
-                    visaFree: [],
-                    requirements: ['Work permit', 'Job offer', 'Proof of qualifications', 'Medical clearance']
-                },
-                study: {
-                    visaFree: [],
-                    requirements: ['Acceptance letter from recognized institution', 'Proof of financial support', 'Medical insurance', 'Language proficiency proof if required']
-                }
-            }
-        };
+            // ---------- DOM elements ----------
+            const cards = {
+                tiktok: document.getElementById('cardTiktok'),
+                youtube: document.getElementById('cardYoutube'),
+                facebook: document.getElementById('cardFacebook'),
+                instagram: document.getElementById('cardInstagram')
+            };
 
-        // Populate country dropdowns
-        document.addEventListener('DOMContentLoaded', function() {
-            const originSelect = document.getElementById('origin');
-            const destinationSelect = document.getElementById('destination');
-            
-            // Sort countries alphabetically
-            const sortedCountries = [...countries].sort((a, b) => a.name.localeCompare(b.name));
-            
-            sortedCountries.forEach(country => {
-                const option1 = document.createElement('option');
-                option1.value = country.code;
-                option1.textContent = country.name;
-                originSelect.appendChild(option1);
-                
-                const option2 = document.createElement('option');
-                option2.value = country.code;
-                option2.textContent = country.name;
-                destinationSelect.appendChild(option2);
-            });
-            
-            // Add event listener to check button
-            document.getElementById('check-btn').addEventListener('click', checkVisaRequirements);
-        });
+            const labelIcon = document.getElementById('labelIcon');
+            const labelText = document.getElementById('labelText');
+            const infoTextEl = document.getElementById('infoText');
+            const btnPlatformName = document.getElementById('btnPlatformName');
+            const urlInput = document.getElementById('videoUrl');
+            const downloadBtn = document.getElementById('downloadBtn');
 
-        function checkVisaRequirements() {
-            const origin = document.getElementById('origin').value;
-            const destination = document.getElementById('destination').value;
-            
-            if (!origin || !destination) {
-                alert('Please select both origin and destination countries');
-                return;
-            }
-            
-            if (origin === destination) {
-                alert('Origin and destination countries cannot be the same');
-                return;
-            }
-            
-            // Get country names for display
-            const originName = document.getElementById('origin').options[document.getElementById('origin').selectedIndex].text;
-            const destinationName = document.getElementById('destination').options[document.getElementById('destination').selectedIndex].text;
-            
-            document.getElementById('route-text').textContent = `${originName} → ${destinationName}`;
-            
-            // Get requirements for destination country (fall back to DEFAULT if not specified)
-            const requirements = visaRequirements[destination] || visaRequirements.DEFAULT;
-            
-            // Check tourist visa
-            checkVisaType('tourist', origin, requirements.tourist);
-            
-            // Check work visa
-            checkVisaType('work', origin, requirements.work);
-            
-            // Check study visa
-            checkVisaType('study', origin, requirements.study);
-            
-            // Show results
-            document.getElementById('results').style.display = 'block';
-            
-            // Scroll to results
-            document.getElementById('results').scrollIntoView({ behavior: 'smooth' });
-        }
+            // example click triggers
+            const exampleTiktok = document.getElementById('exampleTiktok');
+            const exampleYoutube = document.getElementById('exampleYoutube');
+            const exampleFacebook = document.getElementById('exampleFacebook');
+            const exampleInstagram = document.getElementById('exampleInstagram');
 
-        function checkVisaType(type, origin, requirements) {
-            const statusElement = document.getElementById(`${type}-status`);
-            const requirementsElement = document.getElementById(`${type}-requirements`);
-            
-            if (requirements.visaFree.includes(origin)) {
-                statusElement.className = 'visa-status no-visa';
-                statusElement.innerHTML = `<i class="fas fa-check-circle"></i> <strong>NO VISA REQUIRED</strong> for ${type} purposes`;
-                requirementsElement.innerHTML = '<p>You can enter visa-free for stays up to 90 days (typically). Always check current regulations before travel.</p>';
-            } else {
-                statusElement.className = 'visa-status requires-visa';
-                statusElement.innerHTML = `<i class="fas fa-exclamation-circle"></i> <strong>VISA REQUIRED</strong> for ${type} purposes`;
-                
-                let requirementsHTML = '<p>Typical requirements include:</p><ul class="requirements-list">';
-                requirements.requirements.forEach(req => {
-                    requirementsHTML += `<li>${req}</li>`;
+            // ---------- HELPER: remove active class from all cards ----------
+            function removeActiveClass() {
+                Object.values(cards).forEach(card => {
+                    card.classList.remove('active');
                 });
-                requirementsHTML += '</ul><p>Processing times vary. Apply well in advance of your planned travel.</p>';
-                
-                requirementsElement.innerHTML = requirementsHTML;
             }
-        }
+
+            // ---------- CORE: update UI per platform ----------
+            function setPlatform(platform) {
+                currentPlatform = platform;
+
+                // update active card highlight
+                removeActiveClass();
+                if (cards[platform]) cards[platform].classList.add('active');
+
+                // update label icon, text, info message, and button text
+                // platform: tiktok, youtube, facebook, instagram
+                let iconClass = '';
+                let platformDisplayName = '';
+                let color = '#ffffff';
+                let infoMessage = '';
+                let btnText = '';
+
+                switch (platform) {
+                    case 'tiktok':
+                        iconClass = 'fab fa-tiktok';
+                        color = '#ff0050';
+                        platformDisplayName = 'TikTok';
+                        infoMessage = 'Paste any TikTok video URL (with or without watermark). Simulation: click Download to receive a dummy .mp4 link.';
+                        btnText = 'Download TikTok';
+                        break;
+                    case 'youtube':
+                        iconClass = 'fab fa-youtube';
+                        color = '#ff0000';
+                        platformDisplayName = 'YouTube';
+                        infoMessage = 'Supports YouTube videos, shorts, and public links. Demo: dummy 720p MP4 link will be generated.';
+                        btnText = 'Download YouTube';
+                        break;
+                    case 'facebook':
+                        iconClass = 'fab fa-facebook';
+                        color = '#1877f2';
+                        platformDisplayName = 'Facebook';
+                        infoMessage = 'Facebook video downloader — works with public posts and watch links. Demo mode.';
+                        btnText = 'Download Facebook';
+                        break;
+                    case 'instagram':
+                        iconClass = 'fab fa-instagram';
+                        color = '#e1306c';
+                        platformDisplayName = 'Instagram';
+                        infoMessage = 'Instagram video downloader: reels, posts, stories (if accessible). Simulation.';
+                        btnText = 'Download Instagram';
+                        break;
+                    default: break;
+                }
+
+                // update label
+                labelIcon.className = iconClass;
+                labelIcon.style.color = color;
+                labelText.textContent = platformDisplayName + ' Video Downloader';
+                // update info area
+                infoTextEl.innerHTML = `<i class="fas fa-info-circle" style="margin-right: 8px;"></i> ${infoMessage}`;
+                // update button text
+                btnPlatformName.textContent = btnText;
+            }
+
+            // ---------- DOWNLOAD HANDLER (simulated) ----------
+            function handleDownload() {
+                let url = urlInput.value.trim();
+                if (url === '') {
+                    // if empty, show warning but still simulate with generic message
+                    infoTextEl.innerHTML = `<i class="fas fa-exclamation-triangle" style="margin-right: 8px; color: #ffaa66;"></i> No URL entered — using demo placeholder. Please paste a real link for simulation.`;
+                    url = 'https://' + currentPlatform + '.com/demo-placeholder-' + Date.now();
+                } else {
+                    // show that we are processing
+                    infoTextEl.innerHTML = `<i class="fas fa-spinner fa-pulse" style="margin-right: 8px;"></i> Processing request for ${currentPlatform} ... generating demo download...`;
+                }
+
+                // simple URL validation hint (not strict, just for feedback)
+                let domainHint = '';
+                if (url.includes(currentPlatform) || url.includes('http')) {
+                    domainHint = ` (matches ${currentPlatform} pattern)`;
+                }
+
+                // ----- simulate a fake download link (data URI or dummy file) -----
+                // we generate a dynamic blob URI to simulate download
+                setTimeout(() => {
+                    // create a dummy .mp4 filename based on platform
+                    const filename = `${currentPlatform}_video_${Date.now()}.mp4`;
+                    // Fake content — just a text file with download info (simulating)
+                    const fakeContent = `This is a simulated video file for ${currentPlatform}.\nDemo URL: ${url}\nIn a real app, you would receive an actual video stream.\nGenerated at: ${new Date().toLocaleString()}`;
+                    const blob = new Blob([fakeContent], { type: 'text/plain' });
+                    const blobUrl = window.URL.createObjectURL(blob);
+
+                    // create invisible link
+                    const a = document.createElement('a');
+                    a.href = blobUrl;
+                    a.download = filename;   // will download as .txt actually (simulated)
+                    document.body.appendChild(a);
+                    a.click();
+                    document.body.removeChild(a);
+                    window.URL.revokeObjectURL(blobUrl);
+
+                    // update info area after download "complete"
+                    infoTextEl.innerHTML = `<i class="fas fa-check-circle" style="color: #66d9a8; margin-right: 8px;"></i> 
+                    Download started: <strong>${filename}</strong> (simulated .mp4) ${domainHint ? domainHint : ''}`;
+                }, 500); // slight delay to mimic processing
+            }
+
+            // ---------- attach click events to platform cards ----------
+            cards.tiktok.addEventListener('click', function() { setPlatform('tiktok'); });
+            cards.youtube.addEventListener('click', function() { setPlatform('youtube'); });
+            cards.facebook.addEventListener('click', function() { setPlatform('facebook'); });
+            cards.instagram.addEventListener('click', function() { setPlatform('instagram'); });
+
+            // ---------- download button click ----------
+            downloadBtn.addEventListener('click', handleDownload);
+
+            // ---------- press Enter in input field triggers download ----------
+            urlInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    e.preventDefault();
+                    handleDownload();
+                }
+            });
+
+            // ---------- EXAMPLE CLICKS (fill input) ----------
+            exampleTiktok.addEventListener('click', function(e) {
+                urlInput.value = 'https://www.tiktok.com/@cristiano/video/7123456789012345678';
+                setPlatform('tiktok');
+                infoTextEl.innerHTML = `<i class="fas fa-info-circle" style="margin-right: 8px;"></i> TikTok example link ready. Click Download.`;
+            });
+            exampleYoutube.addEventListener('click', function(e) {
+                urlInput.value = 'https://www.youtube.com/watch?v=dQw4w9WgXcQ';
+                setPlatform('youtube');
+                infoTextEl.innerHTML = `<i class="fas fa-info-circle" style="margin-right: 8px;"></i> YouTube example link (Rick Astley). Ready for demo.`;
+            });
+            exampleFacebook.addEventListener('click', function(e) {
+                urlInput.value = 'https://www.facebook.com/watch/?v=1234567890123456';
+                setPlatform('facebook');
+                infoTextEl.innerHTML = `<i class="fas fa-info-circle" style="margin-right: 8px;"></i> Facebook demo video link. Simulate download.`;
+            });
+            exampleInstagram.addEventListener('click', function(e) {
+                urlInput.value = 'https://www.instagram.com/reel/CxYzABC987/';
+                setPlatform('instagram');
+                infoTextEl.innerHTML = `<i class="fas fa-info-circle" style="margin-right: 8px;"></i> Instagram Reel example. Click download.`;
+            });
+
+            // ---------- initialize with default (TikTok) ----------
+            setPlatform('tiktok');
+
+            // additional improvement: if user types anything that looks like a domain, we could hint, but not necessary.
+            // ensure the active card matches initial platform
+        })();
     </script>
-   <script async="async" data-cfasync="false" src="//pl27142399.profitableratecpm.com/0a7831801c6410857c7216446fb4006c/invoke.js"></script>
-<div id="container-0a7831801c6410857c7216446fb4006c"></div>
+
+    <!-- tiny extra style for example tags interaction -->
+    <style>
+        .example-tag:active { background: #557799; }
+        .platform-card { user-select: none; }
+        .fa-spinner { color: #aad0ff; }
+    </style>
 </body>
 </html>

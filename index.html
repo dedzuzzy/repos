@@ -67,7 +67,7 @@
             padding: 15px;
             border-radius: 60px;
             margin: 20px auto;
-            max-width: 600px;
+            max-width: 700px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -75,6 +75,7 @@
             box-shadow: 0 10px 30px rgba(0,0,0,0.3);
             border: 2px solid rgba(255,255,255,0.5);
             animation: pulse 2s infinite;
+            flex-wrap: wrap;
         }
 
         @keyframes pulse {
@@ -216,6 +217,75 @@
             background: rgba(255,215,0,0.3);
             transform: translateY(-3px);
             border-color: #ffd700;
+        }
+
+        /* App-ads.txt Special Section */
+        .app-ads-section {
+            background: rgba(0,0,0,0.2);
+            backdrop-filter: blur(10px);
+            border-radius: 30px;
+            padding: 30px;
+            margin: 40px 0;
+            border: 2px solid #ffd700;
+            text-align: center;
+        }
+
+        .app-ads-section h2 {
+            color: white;
+            font-size: 2rem;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .app-ads-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 15px;
+            background: linear-gradient(45deg, #ffd700, #ff8c00);
+            padding: 20px 40px;
+            border-radius: 60px;
+            color: #333;
+            text-decoration: none;
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin: 20px 0;
+            border: 3px solid white;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+            transition: all 0.3s ease;
+        }
+
+        .app-ads-link:hover {
+            transform: scale(1.05) translateY(-5px);
+            box-shadow: 0 25px 40px rgba(255,215,0,0.5);
+        }
+
+        .app-ads-link .file-icon {
+            font-size: 2rem;
+        }
+
+        .app-ads-badge {
+            background: #ff6b6b;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            margin-left: 15px;
+        }
+
+        .url-display {
+            background: rgba(0,0,0,0.3);
+            color: #ffd700;
+            padding: 15px;
+            border-radius: 15px;
+            font-family: monospace;
+            font-size: 1.1rem;
+            margin: 15px auto;
+            max-width: 600px;
+            word-break: break-all;
+            border: 1px dashed #ffd700;
         }
 
         /* Search Section */
@@ -451,6 +521,11 @@
                 flex-direction: column;
                 padding: 20px;
             }
+            
+            .app-ads-link {
+                font-size: 1rem;
+                padding: 15px 25px;
+            }
         }
     </style>
 </head>
@@ -464,24 +539,50 @@
             <h1>✨ Awesome Android Apps</h1>
             <p>Discover amazing apps for your Android device - all available on Google Play Store!</p>
             
-            <!-- TEXT FILE ACCESS BANNER - This is what you asked for -->
+            <!-- TEXT FILE ACCESS BANNER -->
             <div class="file-access-banner">
                 <span class="file-icon">📄</span>
                 <span style="font-weight: bold;">Access Complete Apps List:</span>
-                <a href="apps-ads.txt" target="_blank">📁 VIEW TXT FILE</a>
-                <a href="apps-ads.txt" download>⬇️ DOWNLOAD TXT</a>
+                <a href="apps-list.txt" target="_blank">📁 VIEW TXT FILE</a>
+                <a href="apps-list.txt" download>⬇️ DOWNLOAD TXT</a>
                 <span class="file-icon">📄</span>
             </div>
             
-            <p style="font-size: 0.9rem; margin-top: 10px;">🔗 Direct link: <code style="background: rgba(0,0,0,0.3); padding: 5px 10px; border-radius: 5px;">https://visaforme.eu/apps-ads.txt</code></p>
+            <p style="font-size: 0.9rem; margin-top: 10px;">🔗 Direct link: <code style="background: rgba(0,0,0,0.3); padding: 5px 10px; border-radius: 5px;">https://github.com/dedzuzzy/repos.git/apps-list.txt</code></p>
         </header>
 
         <!-- Quick Access Links -->
         <div class="quick-access">
             <a href="#apps" class="quick-link">📱 All Apps</a>
             <a href="#featured" class="quick-link">⭐ Featured</a>
-            <a href="apps-list.txt" target="_blank" class="quick-link">📄 TXT File</a>
+            <a href="apps-list.txt" target="_blank" class="quick-link">📄 Apps List</a>
+            <a href="#app-ads" class="quick-link">📋 app-ads.txt</a>
             <a href="#stats" class="quick-link">📊 Stats</a>
+        </div>
+
+        <!-- APP-ADS.TXT SPECIAL SECTION - THIS IS WHAT YOU ASKED FOR -->
+        <div class="app-ads-section" id="app-ads">
+            <h2>
+                <span>📋</span> 
+                App-Ads.txt File Access
+                <span class="app-ads-badge">REQUIRED FOR GOOGLE PLAY</span>
+            </h2>
+            
+            <div class="url-display">
+                <strong>🔗 app-ads.txt URL:</strong> https://github.com/dedzuzzy/repos.git/app-ads.txt
+            </div>
+            
+            <a href="https://github.com/dedzuzzy/repos.git/app-ads.txt" target="_blank" class="app-ads-link">
+                <span class="file-icon">📋</span>
+                OPEN APP-ADS.TXT FILE
+                <span class="file-icon">🔗</span>
+            </a>
+            
+            <div style="color: white; margin-top: 20px; background: rgba(255,255,255,0.1); padding: 15px; border-radius: 15px;">
+                <p>✅ This is your official app-ads.txt file for Google Play Console verification</p>
+                <p>📌 Make sure this file exists at: <code>https://github.com/dedzuzzy/repos.git/app-ads.txt</code></p>
+                <p>🔍 Click the button above to verify it opens correctly</p>
+            </div>
         </div>
 
         <!-- Stats Section -->
@@ -720,7 +821,10 @@
                 <a href="#" style="color: white; text-decoration: none; font-size: 2rem;">▶️</a>
             </div>
             <p>© 2026 Awesome Android Apps. All rights reserved.</p>
-            <p style="margin-top: 10px;">📄 <a href="apps-list.txt" style="color: #ffd700;">Download Apps List (TXT)</a></p>
+            <div style="margin-top: 20px; display: flex; justify-content: center; gap: 30px; flex-wrap: wrap;">
+                <a href="apps-list.txt" style="color: #ffd700;">📄 Download Apps List (TXT)</a>
+                <a href="https://github.com/dedzuzzy/repos.git/app-ads.txt" target="_blank" style="color: #ffd700;">📋 View app-ads.txt</a>
+            </div>
         </footer>
     </div>
 
@@ -812,6 +916,19 @@
                 }
             }, 30);
         });
+
+        // Test if app-ads.txt is accessible
+        fetch('https://github.com/dedzuzzy/repos.git/app-ads.txt')
+            .then(response => {
+                if (response.ok) {
+                    console.log('✅ app-ads.txt is accessible');
+                } else {
+                    console.warn('⚠️ app-ads.txt might not be accessible - status:', response.status);
+                }
+            })
+            .catch(error => {
+                console.warn('⚠️ Could not verify app-ads.txt - make sure the file exists at the URL');
+            });
     </script>
 </body>
 </html>

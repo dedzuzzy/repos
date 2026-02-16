@@ -2,584 +2,923 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5, user-scalable=yes">
-    <title>MEGA VIDEO DOWNLOADER · TikTok, YouTube, FB, IG</title>
-    <!-- Font Awesome 6 (free) for icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <!-- Google Fonts: Inter modern sans -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>✨ Awesome Android Apps - Download on Google Play</title>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-family: 'Poppins', 'Segoe UI', sans-serif;
         }
+
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
 
         body {
-            background: linear-gradient(145deg, #0b0f18 0%, #131a28 100%);
             min-height: 100vh;
-            padding: 2rem 1.5rem;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            color: #ffffff;
+            background: linear-gradient(135deg, #FF6B6B 0%, #4ECDC4 50%, #45B7D1 100%);
+            padding: 20px;
+            position: relative;
+            overflow-x: hidden;
         }
 
-        .mega-container {
-            max-width: 1300px;
+        /* Animated background particles */
+        .particles {
+            position: fixed;
             width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .particle {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            animation: floatParticle 15s infinite linear;
+        }
+
+        @keyframes floatParticle {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.5;
+            }
+            90% {
+                opacity: 0.5;
+            }
+            100% {
+                transform: translateY(-100vh) rotate(720deg);
+                opacity: 0;
+            }
+        }
+
+        .container {
+            max-width: 1400px;
             margin: 0 auto;
+            position: relative;
+            z-index: 1;
         }
 
-        /* header */
-        .app-header {
+        /* Beautiful Header */
+        .header {
             text-align: center;
-            margin-bottom: 3rem;
+            padding: 50px 20px;
+            color: white;
+            animation: fadeInDown 1s ease;
         }
 
-        .app-header h1 {
-            font-size: 2.8rem;
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .header h1 {
+            font-size: 4rem;
+            margin-bottom: 20px;
             font-weight: 700;
-            letter-spacing: -0.02em;
-            background: linear-gradient(to right, #f1f9ff, #c0e0ff, #a3d0ff);
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.2);
+            background: linear-gradient(45deg, #fff, #FFE66D, #FF8C42);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 0.5rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 12px;
-            flex-wrap: wrap;
+            animation: glow 3s ease-in-out infinite alternate;
         }
 
-        .app-header h1 i {
-            background: rgba(255,255,255,0.08);
-            padding: 10px;
-            border-radius: 24px;
-            -webkit-text-fill-color: white;
-            color: white;
-            font-size: 2.2rem;
+        @keyframes glow {
+            from { filter: drop-shadow(0 0 10px rgba(255,255,255,0.5)); }
+            to { filter: drop-shadow(0 0 20px rgba(255,230,109,0.8)); }
         }
 
-        .subhead {
-            color: #a0b8d4;
-            font-size: 1.2rem;
-            font-weight: 400;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-            padding-bottom: 1.2rem;
+        .header p {
+            font-size: 1.4rem;
+            opacity: 0.95;
             max-width: 700px;
             margin: 0 auto;
-        }
-
-        /* platform cards */
-        .platform-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 22px;
-            margin-bottom: 40px;
-        }
-
-        .platform-card {
-            background: rgba(18, 26, 36, 0.7);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 32px;
-            padding: 1.8rem 1rem;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            transition: all 0.25s ease;
-            cursor: pointer;
-            box-shadow: 0 10px 25px -10px rgba(0,0,0,0.5);
-        }
-
-        .platform-card:hover {
-            border-color: rgba(255, 255, 255, 0.25);
-            background: rgba(28, 40, 55, 0.8);
-            transform: translateY(-6px);
-            box-shadow: 0 20px 30px -10px #00000055;
-        }
-
-        .platform-card.active {
-            border: 2px solid #ffffff;
-            background: radial-gradient(circle at top, #1e2b3c, #121c28);
-            box-shadow: 0 0 30px rgba(255,255,255,0.15);
-        }
-
-        .platform-icon {
-            font-size: 2.8rem;
-            margin-bottom: 0.9rem;
-            background: rgba(255,255,255,0.05);
-            padding: 16px;
+            background: rgba(255,255,255,0.15);
+            padding: 15px 40px;
             border-radius: 60px;
-            width: 80px;
-            height: 80px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        /* Stats Section with Beautiful Cards */
+        .stats-container {
             display: flex;
-            align-items: center;
             justify-content: center;
-        }
-
-        .platform-card h3 {
-            font-size: 1.5rem;
-            font-weight: 600;
-            margin-bottom: 0.25rem;
-        }
-
-        .platform-card p {
-            color: #aac1de;
-            font-size: 0.85rem;
-            font-weight: 400;
-        }
-
-        .tiktok { color: #ff0050; }
-        .youtube { color: #ff0000; }
-        .facebook { color: #1877f2; }
-        .instagram { color: #e1306c; }
-
-        /* download panel */
-        .download-panel {
-            background: rgba(13, 19, 27, 0.7);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 48px;
-            padding: 2.5rem 2.2rem;
-            margin-top: 1rem;
-            box-shadow: 0 25px 40px -15px black;
-        }
-
-        .active-label {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            font-size: 1.5rem;
-            font-weight: 600;
-            margin-bottom: 1.8rem;
-            color: #d3e6ff;
-            border-bottom: 1px dashed #3e566b;
-            padding-bottom: 0.9rem;
-        }
-
-        .active-label i {
-            font-size: 2rem;
-        }
-
-        .input-group {
-            display: flex;
+            gap: 30px;
+            margin: 50px 0;
             flex-wrap: wrap;
-            align-items: center;
-            gap: 16px;
-            margin-bottom: 28px;
         }
 
-        .url-input {
-            flex: 1 1 300px;
-            background: #0e151f;
-            border: 1.5px solid #2a3748;
-            border-radius: 60px;
-            padding: 1rem 1.8rem;
+        .stat-card {
+            background: linear-gradient(135deg, rgba(255,107,107,0.9), rgba(78,205,196,0.9));
+            backdrop-filter: blur(10px);
+            padding: 25px 40px;
+            border-radius: 30px;
+            text-align: center;
+            color: white;
+            border: 1px solid rgba(255,255,255,0.3);
+            animation: slideUp 0.5s ease;
+            min-width: 180px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+            transform: translateY(0);
+            transition: all 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 30px 50px rgba(0,0,0,0.3);
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: bold;
+            background: linear-gradient(45deg, #FFE66D, #FFFFFF);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .stat-label {
             font-size: 1.1rem;
-            color: white;
-            outline: none;
-            transition: 0.2s;
-            font-weight: 400;
-            letter-spacing: 0.3px;
+            opacity: 0.9;
+            margin-top: 5px;
         }
 
-        .url-input:focus {
-            border-color: #6c9bd2;
-            background: #0b111a;
-            box-shadow: 0 0 0 3px rgba(98, 159, 255, 0.2);
+        /* Beautiful Search Section */
+        .search-section {
+            margin: 40px 0;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            animation: fadeIn 1s ease 0.3s both;
         }
 
-        .url-input::placeholder {
-            color: #7c8fa3;
-            font-weight: 300;
-            opacity: 0.8;
-        }
-
-        .download-btn {
-            background: linear-gradient(100deg, #2277e0, #1c5bbf);
-            border: none;
+        .search-box {
+            background: rgba(255, 255, 255, 0.95);
             border-radius: 60px;
-            padding: 1rem 2.2rem;
-            color: white;
-            font-size: 1.2rem;
-            font-weight: 600;
+            padding: 5px 25px;
             display: flex;
             align-items: center;
-            gap: 12px;
-            cursor: pointer;
-            transition: 0.18s;
-            border: 1px solid rgba(255,255,255,0.25);
-            box-shadow: 0 8px 18px #00000055;
-            letter-spacing: 0.5px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+            width: 350px;
+            border: 2px solid rgba(255,255,255,0.5);
         }
 
-        .download-btn i {
+        .search-box input {
+            border: none;
+            padding: 15px 10px;
+            width: 100%;
+            font-size: 1rem;
+            outline: none;
+            background: transparent;
+            color: #333;
+        }
+
+        .search-box span {
+            color: #FF6B6B;
             font-size: 1.3rem;
         }
 
-        .download-btn:hover {
-            background: linear-gradient(100deg, #2e8aff, #1f6ad0);
-            transform: scale(1.02);
-            border-color: rgba(255,255,255,0.5);
-        }
-
-        .download-btn:active {
-            transform: scale(0.98);
-        }
-
-        .info-area {
-            background: rgba(0,0,0,0.35);
-            border-radius: 28px;
-            padding: 1.5rem 2rem;
-            margin-top: 28px;
-            border-left: 6px solid #3f7ec6;
-            color: #c9def0;
-            font-size: 1rem;
-            line-height: 1.5;
-            word-break: break-word;
-        }
-
-        .demo-note {
-            background: rgba(255,220,100,0.08);
-            border-radius: 40px;
-            padding: 1.2rem 1.8rem;
-            margin-top: 25px;
-            color: #ffd966;
-            border: 1px solid #ffb34740;
+        .filter-buttons {
             display: flex;
             gap: 12px;
-            align-items: flex-start;
-            font-weight: 400;
+            flex-wrap: wrap;
+            justify-content: center;
         }
 
-        .demo-note i {
-            font-size: 1.5rem;
-            color: #ffb347;
-        }
-
-        .footer-note {
-            margin-top: 45px;
-            color: #7e99b0;
-            text-align: center;
-            font-size: 0.9rem;
-            border-top: 1px solid #25303e;
-            padding-top: 25px;
-        }
-
-        /* examples + tags */
-        .example-tag {
-            display: inline-block;
-            background: #1f3246;
-            border-radius: 30px;
-            padding: 5px 15px;
-            margin: 8px 8px 0 0;
-            font-size: 0.8rem;
-            color: #b3d6ff;
+        .filter-btn {
+            padding: 12px 28px;
+            border: none;
+            border-radius: 40px;
+            font-size: 1rem;
+            font-weight: 600;
             cursor: pointer;
-            border: 1px solid #3d566b;
-            transition: 0.1s;
+            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.9);
+            color: #FF6B6B;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            border: 2px solid transparent;
         }
 
-        .example-tag:hover {
-            background: #2c445e;
+        .filter-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(255,107,107,0.3);
+            background: white;
+        }
+
+        .filter-btn.active {
+            background: linear-gradient(45deg, #FF6B6B, #4ECDC4);
             color: white;
+            border: 2px solid white;
         }
 
-        @media (max-width: 1000px) {
-            .platform-grid { grid-template-columns: repeat(2, 1fr); }
-            .app-header h1 { font-size: 2.2rem; }
+        /* Featured Section - More Beautiful */
+        .featured-section {
+            background: linear-gradient(135deg, #FF8C42, #FF6B6B, #4ECDC4);
+            border-radius: 40px;
+            padding: 50px;
+            margin: 50px 0;
+            color: white;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+            animation: slideIn 1s ease;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.3);
+            position: relative;
+            overflow: hidden;
         }
-        @media (max-width: 600px) {
-            .platform-grid { grid-template-columns: 1fr; }
-            .download-panel { padding: 1.8rem; }
-            .download-btn { width: 100%; justify-content: center; }
+
+        .featured-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
+            transform: rotate(45deg);
+            animation: shine 3s infinite;
+        }
+
+        @keyframes shine {
+            0% { transform: translateX(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) rotate(45deg); }
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .featured-content h2 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .featured-badge {
+            background: rgba(255,255,255,0.2);
+            padding: 10px 25px;
+            border-radius: 50px;
+            display: inline-block;
+            margin-bottom: 20px;
+            font-weight: 600;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255,255,255,0.3);
+        }
+
+        .featured-stats {
+            display: flex;
+            gap: 30px;
+            margin-top: 20px;
+            font-size: 1.1rem;
+        }
+
+        .featured-icon {
+            width: 200px;
+            height: 200px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 5rem;
+            margin: 0 auto;
+            backdrop-filter: blur(10px);
+            border: 3px solid rgba(255,255,255,0.3);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+
+        /* App Grid with Beautiful Cards */
+        .app-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+            gap: 30px;
+            padding: 20px 0;
+        }
+
+        .app-card {
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            border-radius: 35px;
+            padding: 30px;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.15);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.6);
+            animation: cardAppear 0.6s ease;
+        }
+
+        @keyframes cardAppear {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .app-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: linear-gradient(90deg, #FF6B6B, #4ECDC4, #45B7D1, #FFE66D, #FF8C42);
+            background-size: 300% 300%;
+            animation: gradientMove 4s ease infinite;
+        }
+
+        @keyframes gradientMove {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .app-card:hover {
+            transform: translateY(-20px) scale(1.02);
+            box-shadow: 0 40px 70px rgba(255,107,107,0.3);
+        }
+
+        .app-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: linear-gradient(135deg, #FFE66D, #FF8C42);
+            color: #333;
+            padding: 8px 18px;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            font-weight: bold;
+            box-shadow: 0 5px 15px rgba(255,230,109,0.4);
+        }
+
+        .app-icon {
+            width: 110px;
+            height: 110px;
+            border-radius: 30px;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #FF6B6B, #4ECDC4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: white;
+            box-shadow: 0 15px 25px rgba(255,107,107,0.3);
+            transition: all 0.3s ease;
+        }
+
+        .app-card:hover .app-icon {
+            transform: rotate(10deg) scale(1.1);
+            box-shadow: 0 20px 35px rgba(78,205,196,0.4);
+        }
+
+        .app-title {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+            background: linear-gradient(45deg, #FF6B6B, #4ECDC4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .app-category {
+            display: inline-block;
+            padding: 6px 18px;
+            background: linear-gradient(45deg, #f8f9fa, #e9ecef);
+            border-radius: 25px;
+            font-size: 0.95rem;
+            margin-bottom: 15px;
+            color: #495057;
+            font-weight: 600;
+        }
+
+        .app-description {
+            color: #6c757d;
+            margin-bottom: 20px;
+            line-height: 1.6;
+            font-size: 1rem;
+        }
+
+        .rating {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .stars {
+            color: #FFD700;
+            font-size: 1.2rem;
+            letter-spacing: 2px;
+        }
+
+        .rating-value {
+            background: linear-gradient(45deg, #20c997, #12b886);
+            color: white;
+            padding: 4px 10px;
+            border-radius: 8px;
+            font-weight: bold;
+        }
+
+        .app-meta {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 20px;
+            color: #6c757d;
+            font-size: 0.9rem;
+        }
+
+        .app-meta span {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        /* Beautiful Play Store Button */
+        .play-store-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            width: 100%;
+            padding: 16px;
+            background: linear-gradient(45deg, #FF6B6B, #4ECDC4, #45B7D1);
+            background-size: 200% 200%;
+            color: white;
+            text-decoration: none;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: all 0.4s ease;
+            border: none;
+            cursor: pointer;
+            animation: gradientBG 3s ease infinite;
+            box-shadow: 0 10px 25px rgba(255,107,107,0.3);
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .play-store-btn:hover {
+            transform: translateX(8px) scale(1.02);
+            box-shadow: 0 15px 35px rgba(255,107,107,0.5);
+        }
+
+        .play-store-btn span {
+            font-size: 1.3rem;
+        }
+
+        /* Footer with Beautiful Social Links */
+        .footer {
+            text-align: center;
+            padding: 50px 20px;
+            color: white;
+            margin-top: 60px;
+            border-top: 2px solid rgba(255,255,255,0.2);
+            background: linear-gradient(135deg, rgba(255,107,107,0.2), rgba(78,205,196,0.2));
+            backdrop-filter: blur(10px);
+            border-radius: 50px 50px 0 0;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            margin: 30px 0;
+        }
+
+        .social-link {
+            width: 60px;
+            height: 60px;
+            background: rgba(255,255,255,0.15);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            font-size: 1.8rem;
+            transition: all 0.4s ease;
+            border: 2px solid rgba(255,255,255,0.2);
+            backdrop-filter: blur(5px);
+        }
+
+        .social-link:hover {
+            transform: translateY(-10px) rotate(360deg);
+            background: linear-gradient(45deg, #FF6B6B, #4ECDC4);
+            border-color: white;
+            box-shadow: 0 15px 30px rgba(255,107,107,0.4);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2.8rem;
+            }
+
+            .featured-section {
+                grid-template-columns: 1fr;
+                text-align: center;
+                padding: 30px;
+            }
+
+            .featured-icon {
+                margin: 0 auto;
+            }
+
+            .stats-container {
+                gap: 20px;
+            }
+
+            .stat-card {
+                padding: 20px 30px;
+                min-width: 140px;
+            }
+
+            .stat-number {
+                font-size: 2.5rem;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="mega-container">
-        <!-- Header -->
-        <div class="app-header">
-            <h1>
-                <i class="fas fa-download"></i> 
-                MEGA VIDEO DOWNLOADER
-                <i class="fas fa-video"></i>
-            </h1>
-            <div class="subhead">
-                <i class="fas fa-globe" style="margin-right: 8px;"></i> 
-                TikTok · YouTube · Facebook · Instagram — one click away
+    <!-- Animated background particles -->
+    <div class="particles" id="particles"></div>
+
+    <div class="container">
+        <!-- Beautiful Header -->
+        <header class="header">
+            <h1>✨ Awesome Android Apps</h1>
+            <p>Discover amazing apps for your Android device - all available on Google Play Store!</p>
+        </header>
+
+        <!-- Stats Section -->
+        <div class="stats-container">
+            <div class="stat-card">
+                <div class="stat-number">50K+</div>
+                <div class="stat-label">Total Downloads</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">4.8</div>
+                <div class="stat-label">Average Rating</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">15</div>
+                <div class="stat-label">Active Apps</div>
             </div>
         </div>
 
-        <!-- ============ PLATFORM SELECTOR (4 CARDS) ============= -->
-        <div class="platform-grid" id="platformGrid">
-            <!-- TikTok card -->
-            <div class="platform-card active" data-platform="tiktok" id="cardTiktok">
-                <div class="platform-icon tiktok"><i class="fab fa-tiktok fa-3x"></i></div>
-                <h3>TikTok</h3>
-                <p>No watermark, HD</p>
+        <!-- Search and Filter -->
+        <div class="search-section">
+            <div class="search-box">
+                <span>🔍</span>
+                <input type="text" id="searchInput" placeholder="Search beautiful apps..." onkeyup="filterApps()">
             </div>
-            <!-- YouTube card -->
-            <div class="platform-card" data-platform="youtube" id="cardYoutube">
-                <div class="platform-icon youtube"><i class="fab fa-youtube fa-3x"></i></div>
-                <h3>YouTube</h3>
-                <p>MP4, up to 4K</p>
-            </div>
-            <!-- Facebook card -->
-            <div class="platform-card" data-platform="facebook" id="cardFacebook">
-                <div class="platform-icon facebook"><i class="fab fa-facebook fa-3x"></i></div>
-                <h3>Facebook</h3>
-                <p>Public videos, stories</p>
-            </div>
-            <!-- Instagram card -->
-            <div class="platform-card" data-platform="instagram" id="cardInstagram">
-                <div class="platform-icon instagram"><i class="fab fa-instagram fa-3x"></i></div>
-                <h3>Instagram</h3>
-                <p>Posts, reels, stories</p>
+            <div class="filter-buttons">
+                <button class="filter-btn active" onclick="filterByCategory('all')">✨ All Apps</button>
+                <button class="filter-btn" onclick="filterByCategory('productivity')">📊 Productivity</button>
+                <button class="filter-btn" onclick="filterByCategory('games')">🎮 Games</button>
+                <button class="filter-btn" onclick="filterByCategory('education')">📚 Education</button>
+                <button class="filter-btn" onclick="filterByCategory('entertainment')">🎵 Entertainment</button>
             </div>
         </div>
 
-        <!-- ============ DOWNLOAD ACTION PANEL ============= -->
-        <div class="download-panel" id="downloadPanel">
-            <!-- Active platform label dynamically updated -->
-            <div class="active-label" id="activeLabel">
-                <i class="fab fa-tiktok" id="labelIcon" style="color: #ff0050;"></i>
-                <span id="labelText">TikTok Video Downloader</span>
+        <!-- Featured App Section - With ACTUAL Google Play URL -->
+        <div class="featured-section">
+            <div class="featured-content">
+                <span class="featured-badge">🌟 FEATURED APP OF THE MONTH</span>
+                <h2>AI Photo Editor Pro</h2>
+                <p>Transform your photos with powerful AI tools. Remove backgrounds, enhance colors, and create stunning edits in seconds!</p>
+                <div class="featured-stats">
+                    <span>⭐ 4.9 (10K+ reviews)</span>
+                    <span>📥 1M+ downloads</span>
+                </div>
+                <a href="https://play.google.com/store/apps/details?id=com.photoeditor.ai.pro" class="play-store-btn" style="margin-top: 25px; width: auto; display: inline-flex; padding: 18px 40px;">
+                    <span>▶</span> Download Now from Google Play
+                </a>
             </div>
-
-            <!-- INPUT & DOWNLOAD BUTTON -->
-            <div class="input-group">
-                <input type="url" id="videoUrl" class="url-input" placeholder="Paste video link here ..." autocomplete="off" value="">
-                <button class="download-btn" id="downloadBtn">
-                    <i class="fas fa-cloud-download-alt"></i> 
-                    <span id="btnPlatformName">Download TikTok</span>
-                </button>
-            </div>
-
-            <!-- INFO / INSTRUCTION AREA (DYNAMIC) -->
-            <div class="info-area" id="infoArea">
-                <i class="fas fa-info-circle" style="margin-right: 8px;"></i> 
-                <span id="infoText">Paste any TikTok video URL and click Download. (Demo simulation)</span>
-            </div>
-
-            <!-- EXAMPLE LINKS (quick fill) -->
-            <div style="display: flex; flex-wrap: wrap; align-items: baseline; gap: 10px; margin-top: 5px;">
-                <span style="color:#a3c1e0; font-size:0.9rem;"><i class="fas fa-lightbulb"></i> Try an example:</span>
-                <span class="example-tag" id="exampleTiktok">tiktok.com/@example/video/12345</span>
-                <span class="example-tag" id="exampleYoutube">youtube.com/watch?v=abc123</span>
-                <span class="example-tag" id="exampleFacebook">fb.watch/xyz123/</span>
-                <span class="example-tag" id="exampleInstagram">instagram.com/p/CxYzABC/</span>
-            </div>
-
-            <!-- DEMO NOTE (important: it's a frontend demo) -->
-            <div class="demo-note">
-                <i class="fas fa-flask"></i>
-                <span><strong>Functional demo simulation:</strong> This app generates a dummy download link for educational purposes. In a production environment, you would integrate with a proper API or backend service to fetch real video files. No actual videos are downloaded — but the interface fully works.</span>
+            <div style="text-align: center;">
+                <div class="featured-icon">📸</div>
             </div>
         </div>
 
-        <!-- footer -->
-        <div class="footer-note">
-            <i class="fas fa-shield-alt"></i> Mega Downloader • All platforms in one place • 2025
+        <!-- App Grid with ALL Google Play URLs Updated -->
+        <div class="app-grid" id="appGrid">
+            <!-- App Card 1 - NoteMaster Pro with Play Store URL -->
+            <div class="app-card" data-category="productivity">
+                <div class="app-badge">🔥 POPULAR</div>
+                <div class="app-icon">📝</div>
+                <h3 class="app-title">NoteMaster Pro</h3>
+                <span class="app-category">Productivity</span>
+                <p class="app-description">Beautiful notes, tasks, and collaboration. Sync across all your devices seamlessly.</p>
+                <div class="rating">
+                    <div class="stars">★★★★★</div>
+                    <span class="rating-value">4.9</span>
+                </div>
+                <div class="app-meta">
+                    <span>📦 50MB</span>
+                    <span>⬇️ 100K+</span>
+                    <span>📱 5.0+</span>
+                </div>
+                <a href="https://play.google.com/store/apps/details?id=com.notemaster.pro.android" class="play-store-btn">
+                    <span>▶</span> Get on Google Play
+                </a>
+            </div>
+
+            <!-- App Card 2 - Space Raiders with Play Store URL -->
+            <div class="app-card" data-category="games">
+                <div class="app-badge">🆕 NEW</div>
+                <div class="app-icon">🎮</div>
+                <h3 class="app-title">Space Raiders</h3>
+                <span class="app-category">Games</span>
+                <p class="app-description">Epic space shooter with stunning graphics. Fight through waves of enemies!</p>
+                <div class="rating">
+                    <div class="stars">★★★★☆</div>
+                    <span class="rating-value">4.7</span>
+                </div>
+                <div class="app-meta">
+                    <span>📦 120MB</span>
+                    <span>⬇️ 500K+</span>
+                    <span>📱 6.0+</span>
+                </div>
+                <a href="https://play.google.com/store/apps/details?id=com.spaceraiders.game.android" class="play-store-btn">
+                    <span>▶</span> Get on Google Play
+                </a>
+            </div>
+
+            <!-- App Card 3 - Language Learner with Play Store URL -->
+            <div class="app-card" data-category="education">
+                <div class="app-icon">📚</div>
+                <h3 class="app-title">Language Learner</h3>
+                <span class="app-category">Education</span>
+                <p class="app-description">Learn 20+ languages with interactive lessons and AI-powered pronunciation coach.</p>
+                <div class="rating">
+                    <div class="stars">★★★★★</div>
+                    <span class="rating-value">4.8</span>
+                </div>
+                <div class="app-meta">
+                    <span>📦 80MB</span>
+                    <span>⬇️ 250K+</span>
+                    <span>📱 5.0+</span>
+                </div>
+                <a href="https://play.google.com/store/apps/details?id=com.language.learner.android" class="play-store-btn">
+                    <span>▶</span> Get on Google Play
+                </a>
+            </div>
+
+            <!-- App Card 4 - Music Mixer with Play Store URL -->
+            <div class="app-card" data-category="entertainment">
+                <div class="app-badge">⭐ EDITOR'S CHOICE</div>
+                <div class="app-icon">🎵</div>
+                <h3 class="app-title">Music Mixer</h3>
+                <span class="app-category">Entertainment</span>
+                <p class="app-description">Create amazing music mixes with professional DJ tools and effects.</p>
+                <div class="rating">
+                    <div class="stars">★★★★★</div>
+                    <span class="rating-value">4.9</span>
+                </div>
+                <div class="app-meta">
+                    <span>📦 95MB</span>
+                    <span>⬇️ 1M+</span>
+                    <span>📱 5.0+</span>
+                </div>
+                <a href="https://play.google.com/store/apps/details?id=com.music.mixer.pro.android" class="play-store-btn">
+                    <span>▶</span> Get on Google Play
+                </a>
+            </div>
+
+            <!-- App Card 5 - Budget Tracker with Play Store URL -->
+            <div class="app-card" data-category="productivity">
+                <div class="app-icon">💰</div>
+                <h3 class="app-title">Budget Tracker</h3>
+                <span class="app-category">Productivity</span>
+                <p class="app-description">Smart budget management with AI-powered insights and expense tracking.</p>
+                <div class="rating">
+                    <div class="stars">★★★★☆</div>
+                    <span class="rating-value">4.6</span>
+                </div>
+                <div class="app-meta">
+                    <span>📦 45MB</span>
+                    <span>⬇️ 150K+</span>
+                    <span>📱 5.0+</span>
+                </div>
+                <a href="https://play.google.com/store/apps/details?id=com.budget.tracker.android" class="play-store-btn">
+                    <span>▶</span> Get on Google Play
+                </a>
+            </div>
+
+            <!-- App Card 6 - Fitness Coach with Play Store URL -->
+            <div class="app-card" data-category="health">
+                <div class="app-badge">🏆 TRENDING</div>
+                <div class="app-icon">🏃</div>
+                <h3 class="app-title">Fitness Coach</h3>
+                <span class="app-category">Health & Fitness</span>
+                <p class="app-description">Personalized workouts, meal plans, and progress tracking with AI coach.</p>
+                <div class="rating">
+                    <div class="stars">★★★★★</div>
+                    <span class="rating-value">4.9</span>
+                </div>
+                <div class="app-meta">
+                    <span>📦 70MB</span>
+                    <span>⬇️ 750K+</span>
+                    <span>📱 5.0+</span>
+                </div>
+                <a href="https://play.google.com/store/apps/details?id=com.fitness.coach.ai.android" class="play-store-btn">
+                    <span>▶</span> Get on Google Play
+                </a>
+            </div>
+
+            <!-- App Card 7 - Weather App with Play Store URL -->
+            <div class="app-card" data-category="productivity">
+                <div class="app-badge">🌤️ NEW</div>
+                <div class="app-icon">☀️</div>
+                <h3 class="app-title">Weather Master</h3>
+                <span class="app-category">Weather</span>
+                <p class="app-description">Accurate weather forecasts with beautiful animations and severe weather alerts.</p>
+                <div class="rating">
+                    <div class="stars">★★★★☆</div>
+                    <span class="rating-value">4.7</span>
+                </div>
+                <div class="app-meta">
+                    <span>📦 35MB</span>
+                    <span>⬇️ 500K+</span>
+                    <span>📱 5.0+</span>
+                </div>
+                <a href="https://play.google.com/store/apps/details?id=com.weather.master.android" class="play-store-btn">
+                    <span>▶</span> Get on Google Play
+                </a>
+            </div>
+
+            <!-- App Card 8 - Cooking App with Play Store URL -->
+            <div class="app-card" data-category="entertainment">
+                <div class="app-icon">🍳</div>
+                <h3 class="app-title">Recipe Finder</h3>
+                <span class="app-category">Food & Drink</span>
+                <p class="app-description">Thousands of delicious recipes with step-by-step video guides and meal planning.</p>
+                <div class="rating">
+                    <div class="stars">★★★★★</div>
+                    <span class="rating-value">4.8</span>
+                </div>
+                <div class="app-meta">
+                    <span>📦 60MB</span>
+                    <span>⬇️ 300K+</span>
+                    <span>📱 5.0+</span>
+                </div>
+                <a href="https://play.google.com/store/apps/details?id=com.recipe.finder.android" class="play-store-btn">
+                    <span>▶</span> Get on Google Play
+                </a>
+            </div>
         </div>
+
+        <!-- Beautiful Footer with Social Links -->
+        <footer class="footer">
+            <h3 style="margin-bottom: 25px; font-size: 2rem;">🌟 Follow Us for Updates</h3>
+            <div class="social-links">
+                <a href="https://twitter.com/awesomeandroidapps" class="social-link">🐦</a>
+                <a href="https://facebook.com/awesomeandroidapps" class="social-link">📘</a>
+                <a href="https://instagram.com/awesomeandroidapps" class="social-link">📷</a>
+                <a href="https://youtube.com/awesomeandroidapps" class="social-link">▶️</a>
+                <a href="https://tiktok.com/@awesomeandroidapps" class="social-link">🎵</a>
+            </div>
+            <p style="margin-top: 30px; opacity: 0.9;">© 2026 Awesome Android Apps. All rights reserved.</p>
+            <p style="margin-top: 10px; opacity: 0.8;">All apps available on Google Play Store</p>
+        </footer>
     </div>
 
     <script>
-        (function() {
-            "use strict";
-
-            // ---------- STATE: current selected platform ----------
-            let currentPlatform = 'tiktok';   // default
-
-            // ---------- DOM elements ----------
-            const cards = {
-                tiktok: document.getElementById('cardTiktok'),
-                youtube: document.getElementById('cardYoutube'),
-                facebook: document.getElementById('cardFacebook'),
-                instagram: document.getElementById('cardInstagram')
-            };
-
-            const labelIcon = document.getElementById('labelIcon');
-            const labelText = document.getElementById('labelText');
-            const infoTextEl = document.getElementById('infoText');
-            const btnPlatformName = document.getElementById('btnPlatformName');
-            const urlInput = document.getElementById('videoUrl');
-            const downloadBtn = document.getElementById('downloadBtn');
-
-            // example click triggers
-            const exampleTiktok = document.getElementById('exampleTiktok');
-            const exampleYoutube = document.getElementById('exampleYoutube');
-            const exampleFacebook = document.getElementById('exampleFacebook');
-            const exampleInstagram = document.getElementById('exampleInstagram');
-
-            // ---------- HELPER: remove active class from all cards ----------
-            function removeActiveClass() {
-                Object.values(cards).forEach(card => {
-                    card.classList.remove('active');
-                });
+        // Create animated particles
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            for (let i = 0; i < 30; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                const size = Math.random() * 15 + 5;
+                particle.style.width = size + 'px';
+                particle.style.height = size + 'px';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.bottom = '-10%';
+                particle.style.animationDelay = Math.random() * 10 + 's';
+                particle.style.animationDuration = Math.random() * 15 + 10 + 's';
+                particle.style.background = `rgba(255, 255, 255, ${Math.random() * 0.3})`;
+                particlesContainer.appendChild(particle);
             }
+        }
 
-            // ---------- CORE: update UI per platform ----------
-            function setPlatform(platform) {
-                currentPlatform = platform;
-
-                // update active card highlight
-                removeActiveClass();
-                if (cards[platform]) cards[platform].classList.add('active');
-
-                // update label icon, text, info message, and button text
-                // platform: tiktok, youtube, facebook, instagram
-                let iconClass = '';
-                let platformDisplayName = '';
-                let color = '#ffffff';
-                let infoMessage = '';
-                let btnText = '';
-
-                switch (platform) {
-                    case 'tiktok':
-                        iconClass = 'fab fa-tiktok';
-                        color = '#ff0050';
-                        platformDisplayName = 'TikTok';
-                        infoMessage = 'Paste any TikTok video URL (with or without watermark). Simulation: click Download to receive a dummy .mp4 link.';
-                        btnText = 'Download TikTok';
-                        break;
-                    case 'youtube':
-                        iconClass = 'fab fa-youtube';
-                        color = '#ff0000';
-                        platformDisplayName = 'YouTube';
-                        infoMessage = 'Supports YouTube videos, shorts, and public links. Demo: dummy 720p MP4 link will be generated.';
-                        btnText = 'Download YouTube';
-                        break;
-                    case 'facebook':
-                        iconClass = 'fab fa-facebook';
-                        color = '#1877f2';
-                        platformDisplayName = 'Facebook';
-                        infoMessage = 'Facebook video downloader — works with public posts and watch links. Demo mode.';
-                        btnText = 'Download Facebook';
-                        break;
-                    case 'instagram':
-                        iconClass = 'fab fa-instagram';
-                        color = '#e1306c';
-                        platformDisplayName = 'Instagram';
-                        infoMessage = 'Instagram video downloader: reels, posts, stories (if accessible). Simulation.';
-                        btnText = 'Download Instagram';
-                        break;
-                    default: break;
-                }
-
-                // update label
-                labelIcon.className = iconClass;
-                labelIcon.style.color = color;
-                labelText.textContent = platformDisplayName + ' Video Downloader';
-                // update info area
-                infoTextEl.innerHTML = `<i class="fas fa-info-circle" style="margin-right: 8px;"></i> ${infoMessage}`;
-                // update button text
-                btnPlatformName.textContent = btnText;
-            }
-
-            // ---------- DOWNLOAD HANDLER (simulated) ----------
-            function handleDownload() {
-                let url = urlInput.value.trim();
-                if (url === '') {
-                    // if empty, show warning but still simulate with generic message
-                    infoTextEl.innerHTML = `<i class="fas fa-exclamation-triangle" style="margin-right: 8px; color: #ffaa66;"></i> No URL entered — using demo placeholder. Please paste a real link for simulation.`;
-                    url = 'https://' + currentPlatform + '.com/demo-placeholder-' + Date.now();
+        // Filter apps by category
+        function filterByCategory(category) {
+            const cards = document.querySelectorAll('.app-card');
+            const buttons = document.querySelectorAll('.filter-btn');
+            
+            buttons.forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            
+            cards.forEach(card => {
+                if (category === 'all' || card.dataset.category === category) {
+                    card.style.display = 'block';
+                    card.style.animation = 'cardAppear 0.6s ease';
                 } else {
-                    // show that we are processing
-                    infoTextEl.innerHTML = `<i class="fas fa-spinner fa-pulse" style="margin-right: 8px;"></i> Processing request for ${currentPlatform} ... generating demo download...`;
+                    card.style.display = 'none';
                 }
+            });
+        }
 
-                // simple URL validation hint (not strict, just for feedback)
-                let domainHint = '';
-                if (url.includes(currentPlatform) || url.includes('http')) {
-                    domainHint = ` (matches ${currentPlatform} pattern)`;
+        // Search apps
+        function filterApps() {
+            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+            const cards = document.querySelectorAll('.app-card');
+            
+            cards.forEach(card => {
+                const title = card.querySelector('.app-title').textContent.toLowerCase();
+                const description = card.querySelector('.app-description').textContent.toLowerCase();
+                
+                if (title.includes(searchTerm) || description.includes(searchTerm)) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
                 }
+            });
+        }
 
-                // ----- simulate a fake download link (data URI or dummy file) -----
-                // we generate a dynamic blob URI to simulate download
-                setTimeout(() => {
-                    // create a dummy .mp4 filename based on platform
-                    const filename = `${currentPlatform}_video_${Date.now()}.mp4`;
-                    // Fake content — just a text file with download info (simulating)
-                    const fakeContent = `This is a simulated video file for ${currentPlatform}.\nDemo URL: ${url}\nIn a real app, you would receive an actual video stream.\nGenerated at: ${new Date().toLocaleString()}`;
-                    const blob = new Blob([fakeContent], { type: 'text/plain' });
-                    const blobUrl = window.URL.createObjectURL(blob);
+        // Initialize
+        createParticles();
 
-                    // create invisible link
-                    const a = document.createElement('a');
-                    a.href = blobUrl;
-                    a.download = filename;   // will download as .txt actually (simulated)
-                    document.body.appendChild(a);
-                    a.click();
-                    document.body.removeChild(a);
-                    window.URL.revokeObjectURL(blobUrl);
-
-                    // update info area after download "complete"
-                    infoTextEl.innerHTML = `<i class="fas fa-check-circle" style="color: #66d9a8; margin-right: 8px;"></i> 
-                    Download started: <strong>${filename}</strong> (simulated .mp4) ${domainHint ? domainHint : ''}`;
-                }, 500); // slight delay to mimic processing
+        // Animate stats counter
+        const stats = document.querySelectorAll('.stat-number');
+        stats.forEach(stat => {
+            const finalValue = stat.textContent;
+            const isK = finalValue.includes('K');
+            const isNumber = !isK && !isNaN(parseFloat(finalValue));
+            
+            if (isNumber || isK) {
+                let currentValue = 0;
+                let targetValue = isK ? parseFloat(finalValue) * 1000 : parseFloat(finalValue);
+                const increment = targetValue / 50;
+                
+                const timer = setInterval(() => {
+                    currentValue += increment;
+                    if (currentValue >= targetValue) {
+                        stat.textContent = finalValue;
+                        clearInterval(timer);
+                    } else {
+                        if (isK) {
+                            stat.textContent = Math.floor(currentValue / 1000) + 'K+';
+                        } else {
+                            stat.textContent = Math.floor(currentValue) + '+';
+                        }
+                    }
+                }, 30);
             }
+        });
 
-            // ---------- attach click events to platform cards ----------
-            cards.tiktok.addEventListener('click', function() { setPlatform('tiktok'); });
-            cards.youtube.addEventListener('click', function() { setPlatform('youtube'); });
-            cards.facebook.addEventListener('click', function() { setPlatform('facebook'); });
-            cards.instagram.addEventListener('click', function() { setPlatform('instagram'); });
-
-            // ---------- download button click ----------
-            downloadBtn.addEventListener('click', handleDownload);
-
-            // ---------- press Enter in input field triggers download ----------
-            urlInput.addEventListener('keypress', function(e) {
-                if (e.key === 'Enter') {
-                    e.preventDefault();
-                    handleDownload();
-                }
+        // Add click animation to Play Store buttons
+        document.querySelectorAll('.play-store-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                btn.style.transform = 'scale(0.95)';
+                setTimeout(() => {
+                    btn.style.transform = '';
+                    // Open the Google Play link in a new tab
+                    window.open(btn.href, '_blank');
+                }, 200);
             });
-
-            // ---------- EXAMPLE CLICKS (fill input) ----------
-            exampleTiktok.addEventListener('click', function(e) {
-                urlInput.value = 'https://www.tiktok.com/@cristiano/video/7123456789012345678';
-                setPlatform('tiktok');
-                infoTextEl.innerHTML = `<i class="fas fa-info-circle" style="margin-right: 8px;"></i> TikTok example link ready. Click Download.`;
-            });
-            exampleYoutube.addEventListener('click', function(e) {
-                urlInput.value = 'https://www.youtube.com/watch?v=dQw4w9WgXcQ';
-                setPlatform('youtube');
-                infoTextEl.innerHTML = `<i class="fas fa-info-circle" style="margin-right: 8px;"></i> YouTube example link (Rick Astley). Ready for demo.`;
-            });
-            exampleFacebook.addEventListener('click', function(e) {
-                urlInput.value = 'https://www.facebook.com/watch/?v=1234567890123456';
-                setPlatform('facebook');
-                infoTextEl.innerHTML = `<i class="fas fa-info-circle" style="margin-right: 8px;"></i> Facebook demo video link. Simulate download.`;
-            });
-            exampleInstagram.addEventListener('click', function(e) {
-                urlInput.value = 'https://www.instagram.com/reel/CxYzABC987/';
-                setPlatform('instagram');
-                infoTextEl.innerHTML = `<i class="fas fa-info-circle" style="margin-right: 8px;"></i> Instagram Reel example. Click download.`;
-            });
-
-            // ---------- initialize with default (TikTok) ----------
-            setPlatform('tiktok');
-
-            // additional improvement: if user types anything that looks like a domain, we could hint, but not necessary.
-            // ensure the active card matches initial platform
-        })();
+        });
     </script>
-
-    <!-- tiny extra style for example tags interaction -->
-    <style>
-        .example-tag:active { background: #8d959d; }
-        .platform-card { user-select: none; }
-        .fa-spinner { color: #aad0ff; }
-    </style>
 </body>
 </html>
